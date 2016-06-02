@@ -73,24 +73,6 @@ class SphericalGeometry
             * sin($toLat) - sin($fromLat) * cos($toLat) * cos($lng))));
     }
     
-    public static function computeOffset($fromLatLng, $distance, $heading) 
-    {
-        $distance /= self::EARTH_RADIUS;
-        $heading = deg2rad($heading);
-        $fromLat = deg2rad($fromLatLng->getLat());
-        $cosDistance = cos($distance);
-        $sinDistance = sin($distance);
-        $sinFromLat = sin($fromLat);
-        $cosFromLat = cos($fromLat);
-        $sc = $cosDistance * $sinFromLat + $sinDistance * $cosFromLat * cos($heading);
-        
-        $lat = rad2deg(asin($sc));
-        $lng = rad2deg(deg2rad($fromLatLng->getLng()) + atan2($sinDistance * $cosFromLat 
-            * sin($heading), $cosDistance - $sinFromLat * $sc));
-        
-        return new LatLng($lat, $lng);
-    }
-    
     public static function interpolate($fromLatLng, $toLatLng, $fraction)
     {
         $radFromLat = deg2rad($fromLatLng->getLat());

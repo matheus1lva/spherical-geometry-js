@@ -4,8 +4,34 @@
  * @module spherical-geometry
  */
 
+function toDegrees(radians) {
+	return radians * 180 / Math.PI;
+}
+
+function toRadians(angleDegrees) {
+	return angleDegrees * Math.PI / 180.0;
+};
+
 /** Earth's radius (at the Ecuator) of 6378137 meters. */
 export const EARTH_RADIUS = 6378137;
+
+export function computeOffset(from, distance, heading) {
+	distance /= EARTH_RADIUS;
+	heading = toRadians(heading);
+	let fromLat = Angle.toDegrees(from.lat());
+	let cosDistance = Math.cos(distance);
+	let sinDistance = Math.sin(distance);
+	let sinFromLat = Math.sin(fromLat);
+	let cosFromLat = Math.cos(fromLat);
+	let sc = cosDistance * sinFromLat + sinDistance 
+	       * cosFromLat * Math.cos(heading);
+	return new LatLng(
+		toDegrees(Math.asin(sc)),
+		toDegrees(toRadians(from.lng()) + Math.atan2(sinDistance 
+				* cosFromLat * Math.sin(heading), 
+			cosDistance - sinFromLat * sc))
+	);
+}
 
 export class LatLng {
 	constructor(lat, lng, noWrap = false) {
