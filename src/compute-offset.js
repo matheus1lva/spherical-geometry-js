@@ -16,6 +16,7 @@ export default function computeOffset(
 	from = convert(from);
 	distance /= radius;
 	heading = toRadians(heading);
+
 	const fromLat = toDegrees(from.lat());
 	const cosDistance = Math.cos(distance);
 	const sinDistance = Math.sin(distance);
@@ -23,6 +24,7 @@ export default function computeOffset(
 	const cosFromLat = Math.cos(fromLat);
 	const sc = cosDistance * sinFromLat + sinDistance 
 		* cosFromLat * Math.cos(heading);
+		
 	return new LatLng(
 		toDegrees(Math.asin(sc)),
 		toDegrees(toRadians(from.lng()) + Math.atan2(sinDistance 
