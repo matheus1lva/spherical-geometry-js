@@ -1,5 +1,7 @@
 import {convert} from './latlng.js';
-import {toRadians} from './utils.js'
+import {toRadians, toDegrees} from './utils.js'
+
+const fmod = (a, b) => Number((a - (Math.floor(a / b) * b)).toPrecision(8));
 
 /**
  * Returns the heading from one LatLng to another LatLng. Headings are expresss
@@ -14,5 +16,14 @@ export default function computeHeading(from, to) {
 		toLat = toRadians(to.lat()),
 		deltaLng = toRadians(to.lng()) - toRadians(from.lng());
 	
-	return 
+	const angle = toDegrees(
+		Math.atan2(
+			Math.sin(deltaLng) * Math.cos(toLat), 
+			Math.cos(fromLat) * Math.sin(toLat) - 
+			Math.sin(fromLat) * Math.cos(toLat) * Math.cos(deltaLng)
+		)
+	);
+
+	if (angle === 180) return angle;
+	else return fmod( (fmod((angle - -180), 360) + 360), 360 ) + -180;
 }
