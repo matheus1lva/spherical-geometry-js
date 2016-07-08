@@ -10,8 +10,6 @@ import {convert} from './latlng.js';
  * @param {number} [radius]
  * @returns {number}
  */
-export default function computeOffset(
-	from, distance, heading, radius = EARTH_RADIUS
-) {
+export default function computeSignedArea(loop, radius = EARTH_RADIUS) {
 	
 }

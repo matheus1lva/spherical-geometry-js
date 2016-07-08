@@ -2,6 +2,7 @@
  * Spherical Geometry Library v2.0.0
  * This code is a port of some classes from the Google Maps Javascript API
  * @module spherical-geometry
+ * @todo computeLength, computeArea, computeOffsetOrigin, computeSignedArea
  */
 
 export {default as computeArea} from './compute-area.js';
