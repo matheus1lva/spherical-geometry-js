@@ -6,13 +6,13 @@ This library ports a small but useful subset of classes from the Google Maps Jav
 
 ## How to use
 ```javascript
-import * as geometry from 'spherical-geometry';
+import * as geometry from 'spherical-geometry-js';
 ```
 Or import individual modules
 
 ```javascript
-import {computeArea} from 'spherical-geometry'
-import computeArea from 'spherical-geometry/compute-area'
+import {computeArea} from 'spherical-geometry-js'
+import computeArea from 'spherical-geometry-js/compute-area'
 ```
 
 Notes:
@@ -39,7 +39,7 @@ latlng[1] === latlng.lat();
 ```
 
 ```javascript
-import {equalLatLngs} from 'spherical-geometry';
+import {equalLatLngs} from 'spherical-geometry-js';
 
 equalLatLngs(latlng1, latlng2) === latlng1.equals(latlng2);
 ```
