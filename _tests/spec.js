@@ -43,4 +43,66 @@ test('Spherical geometry static class', t => {
 		),
 		'computeArea(london, donostia, newyork)'
 	)
+
+	t.equal(
+		S.computeDistanceBetween(
+			places.london, places.newyork
+		),
+		google.maps.geometry.spherical.computeDistanceBetween(
+			googlePlaces.london, googlePlaces.newyork
+		),
+		'computeDistanceBetween(london, newyork)'
+	)
+
+	t.equal(
+		S.computeHeading(
+			places.london, places.newyork
+		),
+		google.maps.geometry.spherical.computeHeading(
+			googlePlaces.london, googlePlaces.newyork
+		),
+		'computeHeading(london, newyork)'
+	)
+
+	t.equal(
+		S.computeLength([
+			places.london, places.newyork,
+			places.moscow, places.sydney
+		]),
+		google.maps.geometry.spherical.computeLength([
+			googlePlaces.london, googlePlaces.newyork, 
+			googlePlaces.moscow, googlePlaces.sydney
+		]),
+		'computeLength(london, newyork, moscow, sydney)'
+	)
+
+	t.equal(
+		S.computeOffset(
+			places.london, 5576353.232683, -71.669371
+		),
+		google.maps.geometry.spherical.computeOffset(
+			googlePlaces.london, 5576353.232683, -71.669371
+		),
+		'computeOffset(london, 5576353.232683, -71.669371)'
+	)
+
+	t.equal(
+		S.computeSignedArea(
+			[places.london, places.donostia, places.newyork]
+		),
+		google.maps.geometry.spherical.computeSignedArea(
+			[googlePlaces.london, googlePlaces.donostia, googlePlaces.newyork]
+		),
+		'computeSignedArea(london, donostia, newyork)'
+	)
+
+	t.equal(
+		S.interpolate(
+			places.newyork, places.sydney, 0.7
+		),
+		google.maps.geometry.spherical.interpolate(
+			googlePlaces.newyork, googlePlaces.sydney, 0.7
+		),
+		'interpolate(newyork, sydney, 0.7)'
+	)
 })
