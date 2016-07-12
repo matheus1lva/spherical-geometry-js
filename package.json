@@ -1,0 +1,33 @@
+{
+  "name": "spherical-geometry-js",
+  "version": "1.0.0",
+  "description": "This library provides classes and functions for the computation of geometric data on the surface of the Earth. Code ported from the Google Maps Javascript API v3 and tubalmartin/spherical-geometry-php",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "tape \"_tests/**\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NotWoods/spherical-geometry-js.git"
+  },
+  "keywords": [
+    "google",
+    "geometry",
+    "spherical",
+    "geometry",
+    "google",
+    "maps",
+    "google",
+    "maps",
+    "api",
+    "google",
+    "maps",
+    "javascript",
+    "geometric"
+  ],
+  "bugs": {
+    "url": "https://github.com/NotWoods/spherical-geometry-js/issues"
+  },
+  "homepage": "https://github.com/NotWoods/spherical-geometry-js#readme",
+  "devDependencies": {"tape": "^4.6.0"}
+}
