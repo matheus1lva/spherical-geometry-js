@@ -1,4 +1,4 @@
-import {EARTH_RADIUS, toDegrees, toRadians} from './utils.js';
+import {EARTH_RADIUS, toRadians} from './utils.js';
 import {convert} from './latlng.js';
 
 /**
@@ -18,5 +18,5 @@ export default function computeDistanceBetween(from, to, radius = EARTH_RADIUS)
 		Math.pow(Math.sin((radFromLat - radToLat) / 2), 2) 
 		+ Math.cos(radFromLat) * Math.cos(radToLat) * 
 		Math.pow(Math.sin((radFromLng - radToLng) / 2), 2)
-	));
+	)) * radius;
 }
