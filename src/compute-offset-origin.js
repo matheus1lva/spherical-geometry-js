@@ -6,6 +6,7 @@ import LatLng, {convert} from './latlng.js';
  * meters travelled and original heading. Headings are expressed in degrees
  * clockwise from North. This function returns null when no solution is
  * available.
+ * @todo
  * @param {LatLng} to
  * @param {number} distance
  * @param {number} heading
@@ -15,5 +16,5 @@ import LatLng, {convert} from './latlng.js';
 export default function computeOffset(
 	to, distance, heading, radius = EARTH_RADIUS
 ) {
-	
+	throw Error('computeOffset not implemented')
 }
