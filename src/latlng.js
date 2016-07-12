@@ -17,22 +17,23 @@ const has = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
  * 5. If it has x and y properties, try using y as latitude and x and 
  *    longitude.
  * @param {any} like
+ * @param {function} [Class=LatLng]
  * @returns {LatLng}
  */
-export function convert(like) {
-	if (like instanceof LatLng) return new LatLng(like[LAT], like[LNG]);
+export function convert(like, Class = LatLng) {
+	if (like instanceof LatLng) return new Class(like[LAT], like[LNG]);
 	else if (has(like, 'lat') && has(like, 'lng')) {
 		if (typeof like.lat == 'function' && typeof like.lng == 'function')	{
-			return new LatLng(like.lat(), like.lng());
+			return new Class(like.lat(), like.lng());
 		} else {
-			return new LatLng(parseFloat(like.lat), parseFloat(like.lng));
+			return new Class(parseFloat(like.lat), parseFloat(like.lng));
 		}
 	} else if (has(like, 'lat') && has(like, 'long')) {
-		return new LatLng(parseFloat(like.lat), parseFloat(like.long));
+		return new Class(parseFloat(like.lat), parseFloat(like.long));
 	} else if (typeof like[0] === 'number' &&	typeof like[1] === 'number') {
-		return new LatLng(like[1], like[0]);
+		return new Class(like[1], like[0]);
 	} else if (has(like, 'x') && has(like, 'y')) {
-		return new LatLng(parseFloat(like.y), parseFloat(like.x));
+		return new Class(parseFloat(like.y), parseFloat(like.x));
 	}
 }
 
@@ -68,6 +69,7 @@ export class LatLng {
 
 		Object.defineProperty(this, LAT, {value: lat});
 		Object.defineProperty(this, LNG, {value: lng});
+		this.length = 2;
 	}
 	
 	/**
