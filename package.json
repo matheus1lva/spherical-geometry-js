@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This library provides classes and functions for the computation of geometric data on the surface of the Earth. Code ported from the Google Maps Javascript API v3 and tubalmartin/spherical-geometry-php",
   "main": "src/index.js",
+  "jsnext:main": "src/index.js",
   "scripts": {
     "test": "tape \"_tests/**\""
   },
