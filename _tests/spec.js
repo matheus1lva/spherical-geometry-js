@@ -1,4 +1,4 @@
-import test from 'tape';
+const test = require('tape');
 import * as S from '../src/index.js';
 /*global google */
 
