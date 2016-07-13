@@ -5,7 +5,7 @@
   "main": "cjs.js",
   "jsnext:main": "src/index.js",
   "scripts": {
-    "test": "rollup _tests/spec.js -f iife -o _tests/build.js",
+    "test": "rollup _tests/spec.js -f iife -o _tests/build.js -g tape:test",
     "docs": "rollup src/index.js | jsdoc2md > API.md",
     "prepublish": "rollup -i src/index.js -o cjs.js -f cjs -m"
   },
