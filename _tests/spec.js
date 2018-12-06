@@ -20,16 +20,16 @@ for (const place in places) {
 test('LatLng class', t => {
 	t.equal(places.sydney.toString(), googlePlaces.sydney.toString(),
 		'toString()');
-	
+
 	t.equal(places.sydney.toUrlValue(), googlePlaces.sydney.toUrlValue(),
 		'toUrlValue()');
-	
+
 	t.equal(places.sydney.toUrlValue(3), googlePlaces.sydney.toUrlValue(3),
 		'toUrlValue(3)');
 
-	t.assert(places.donostia.equals(googlePlaces.donostia), 
+	t.assert(places.donostia.equals(googlePlaces.donostia),
 		'donostia equals(donostia)');
-	t.assert(places.buenosaires.equals(googlePlaces.buenosaires), 
+	t.assert(places.buenosaires.equals(googlePlaces.buenosaires),
 		'buenosaires equals(buenosaires)');
 })
 
@@ -70,7 +70,7 @@ test('Spherical geometry static class', t => {
 			places.moscow, places.sydney
 		]),
 		google.maps.geometry.spherical.computeLength([
-			googlePlaces.london, googlePlaces.newyork, 
+			googlePlaces.london, googlePlaces.newyork,
 			googlePlaces.moscow, googlePlaces.sydney
 		]),
 		'computeLength(london, newyork, moscow, sydney)'

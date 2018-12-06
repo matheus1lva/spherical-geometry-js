@@ -6,7 +6,7 @@
   "jsnext:main": "src/index.js",
   "scripts": {
     "test": "rollup _tests/spec.js -f iife -o _tests/build.js -g tape:test",
-    "docs": "rollup src/index.js | jsdoc2md > API.md",
+    "docs": "rollup src/index.js -f esm | jsdoc2md > API.md",
     "prepublish": "rollup -i src/index.js -o cjs.js -f cjs -m"
   },
   "repository": {
@@ -33,8 +33,8 @@
   },
   "homepage": "https://github.com/NotWoods/spherical-geometry-js#readme",
   "devDependencies": {
-    "tape": "^4.6.0",
-    "rollup": "^0.34.1",
-    "jsdoc-to-markdown": "^1.3.6"
+    "jsdoc-to-markdown": "^1.3.9",
+    "rollup": "^0.67.4",
+    "tape": "^4.6.0"
   }
 }
