@@ -106,3 +106,20 @@ test('Spherical geometry static class', t => {
 		'interpolate(newyork, sydney, 0.7)'
 	)
 })
+
+test('Results match Google API', t => {
+	const rect = [
+    new geometry.LatLng(44.394627717861205, -79.69491139054298),
+    new geometry.LatLng(44.39457357555244, -79.69505790621042),
+    new geometry.LatLng(44.39450050731302, -79.69500459730625),
+    new geometry.LatLng(44.39456351370196, -79.6948466822505)
+	]
+
+	t.equal(
+		S.computeArea(rect, 6378137),
+		google.maps.geometry.spherical.computeArea(
+			[googlePlaces.london, googlePlaces.donostia, googlePlaces.newyork]
+		),
+		'computeArea(london, donostia, newyork)'
+	)
+})
