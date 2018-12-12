@@ -16,14 +16,15 @@ export class LatLng {
     /**
      * @param lat Latitude
      * @param lng Longitude
-     * @param noWrap If true, constrain latitude and longitude.
+     * @param noWrap By default, constrain latitude and longitude.
      * Ensures latitude is between [-90, 90] and
      * longitude is below 180.
+     * Set noWrap to true to avoid this behavior.
      */
     constructor(lat: number | string, lng: number | string, noWrap?: boolean);
 
     /** Comparison function */
-    equals(other: LatLng): boolean;
+    equals(other: LatLngLike): boolean;
 
     /**
      * Returns the latitude in degrees.

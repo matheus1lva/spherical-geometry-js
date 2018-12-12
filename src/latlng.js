@@ -52,12 +52,18 @@ export function equals(one, two) {
     one = convert(one);
     two = convert(two);
     return (
-        Math.abs(one[LAT] - two[LAT] < Number.EPSILON) &&
-        Math.abs(one[LNG] - two[LNG] < Number.EPSILON)
+        Math.abs(one[LAT] - two[LAT]) < Number.EPSILON &&
+        Math.abs(one[LNG] - two[LNG]) < Number.EPSILON
     );
 }
 
 export default class LatLng {
+    /**
+     *
+     * @param {number} lat
+     * @param {number} lng
+     * @param {boolean} noWrap
+     */
     constructor(lat, lng, noWrap = false) {
         lat = parseFloat(lat);
         lng = parseFloat(lng);
@@ -152,7 +158,9 @@ export default class LatLng {
     toUrlValue(precision = 6) {
         precision = parseInt(precision);
         return (
-            this[LAT].toFixed(precision) + ',' + this[LNG].toFixed(precision)
+            parseFloat(this[LAT].toFixed(precision)) +
+            ',' +
+            parseFloat(this[LNG].toFixed(precision))
         );
     }
 }

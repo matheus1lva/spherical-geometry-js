@@ -1,0 +1,19 @@
+{
+    "toString()": "(-33.873651, 151.20688999999993)",
+    "toUrlValue()": "-33.873651,151.20689",
+    "toUrlValue(3)": "-33.874,151.207",
+    "computeArea(london, donostia, newyork)": 2732840962615.066,
+    "computeDistanceBetween(london, newyork)": 5576353.232682846,
+    "computeHeading(london, newyork)": -71.66937052124973,
+    "computeLength(london, newyork, moscow, sydney)": 27607831.481841877,
+    "computeOffset(london, 5576353.232683, -71.669371)": {
+        "lat": 40.7141697137413,
+        "lng": -74.00638969648946
+    },
+    "computeSignedArea(london, donostia, newyork)": -2732840962615.066,
+    "interpolate(newyork, sydney, 0.7)": {
+        "lat": -9.918509273080291,
+        "lng": -169.58278370355396
+    },
+    "computeArea(...path)": 123.11307432762369
+}
