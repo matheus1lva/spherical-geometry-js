@@ -1,47 +1,53 @@
 {
-  "name": "spherical-geometry-js",
-  "version": "1.0.1",
-  "description": "This library provides classes and functions for the computation of geometric data on the surface of the Earth. Code ported from the Google Maps Javascript API v3 and tubalmartin/spherical-geometry-php",
-  "main": "cjs.js",
-  "module": "src/index.js",
-  "jsnext:main": "src/index.js",
-  "license": "MIT",
-  "scripts": {
-    "test": "rollup _tests/spec.js -f iife -o _tests/build.js -g tape:test",
-    "docs": "rollup src/index.js -f esm | jsdoc2md > API.md",
-    "prepublish": "rollup -i src/index.js -o cjs.js -f cjs -m"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NotWoods/spherical-geometry-js.git"
-  },
-  "keywords": [
-    "google",
-    "geometry",
-    "spherical",
-    "geometry",
-    "google",
-    "maps",
-    "google",
-    "maps",
-    "api",
-    "google",
-    "maps",
-    "javascript",
-    "geometric"
-  ],
-  "bugs": {
-    "url": "https://github.com/NotWoods/spherical-geometry-js/issues"
-  },
-  "homepage": "https://github.com/NotWoods/spherical-geometry-js#readme",
-  "devDependencies": {
-    "jsdoc-to-markdown": "^1.3.9",
-    "karma": "^3.1.3",
-    "karma-chrome-launcher": "^2.2.0",
-    "prettier": "^1.15.3",
-    "rollup": "^0.67.4",
-    "tape": "^4.6.0",
-    "tape-dom": "0.0.12",
-    "typescript": "^3.2.1"
-  }
+    "name": "spherical-geometry-js",
+    "version": "1.1.0",
+    "description": "This library provides classes and functions for the computation of geometric data on the surface of the Earth. Code ported from the Google Maps Javascript API v3 and tubalmartin/spherical-geometry-php",
+    "license": "MIT",
+    "author": "Tiger Oakes <contact@tigeroakes.com> (https://tigeroakes.com)",
+    "repository": "NotWoods/spherical-geometry-js",
+    "bugs": "https://github.com/NotWoods/spherical-geometry-js/issues",
+    "homepage": "https://github.com/NotWoods/spherical-geometry-js#readme",
+    "main": "cjs.js",
+    "module": "src/index.js",
+    "jsnext:main": "src/index.js",
+    "scripts": {
+        "test": "rollup _tests/spec.js -f iife -o _tests/build.js -g tape:test",
+        "docs": "rollup src/index.js -f esm | jsdoc2md > API.md",
+        "prepublish": "rollup -i src/index.js -o cjs.js -f cjs -m",
+        "lint": "prettier \"src/**/*.js\" --write",
+        "lint:check": "prettier \"src/**/*.js\" --list-different"
+    },
+    "keywords": [
+        "google",
+        "geometry",
+        "spherical",
+        "geometry",
+        "google",
+        "maps",
+        "google",
+        "maps",
+        "api",
+        "google",
+        "maps",
+        "javascript",
+        "geometric"
+    ],
+    "devDependencies": {
+        "husky": "^1.2.0",
+        "jest": "^23.6.0",
+        "jsdoc-to-markdown": "^1.3.9",
+        "karma": "^3.1.3",
+        "karma-chrome-launcher": "^2.2.0",
+        "prettier": "^1.15.3",
+        "rollup": "^0.67.4",
+        "tape": "^4.6.0",
+        "tape-dom": "0.0.12",
+        "ts-jest": "^23.10.5",
+        "typescript": "^3.2.1"
+    },
+    "prettier": {
+        "singleQuote": true,
+        "trailingComma": "all",
+        "proseWrap": "always"
+    }
 }
