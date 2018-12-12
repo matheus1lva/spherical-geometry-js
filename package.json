@@ -10,6 +10,7 @@
     "main": "cjs.js",
     "module": "src/index.js",
     "jsnext:main": "src/index.js",
+    "types": "index.d.ts",
     "scripts": {
         "test": "rollup _tests/spec.js -f iife -o _tests/build.js -g tape:test",
         "docs": "rollup src/index.js -f esm | jsdoc2md > API.md",
