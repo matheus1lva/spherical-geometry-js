@@ -28,13 +28,13 @@ describe('Spherical geometry Google Maps', () => {
         ).toBeCloseTo(googleMaps['computeDistanceBetween(london, newyork)']);
     });
 
-    test.skip('computeHeading', () => {
+    test('computeHeading', () => {
         expect(computeHeading(places.london, places.newyork)).toBeCloseTo(
-            googleMaps['computeArea(london, donostia, newyork)'],
+            googleMaps['computeHeading(london, newyork)'],
         );
     });
 
-    test.skip('computeLength', () => {
+    test('computeLength', () => {
         expect(
             computeLength([
                 places.london,
@@ -42,7 +42,9 @@ describe('Spherical geometry Google Maps', () => {
                 places.moscow,
                 places.sydney,
             ]),
-        ).toBeCloseTo(googleMaps['computeArea(london, donostia, newyork)']);
+        ).toBeCloseTo(
+            googleMaps['computeLength(london, newyork, moscow, sydney)'],
+        );
     });
 
     test('computeOffset', () => {
@@ -62,12 +64,9 @@ describe('Spherical geometry Google Maps', () => {
         );
     });
 
-    test.skip('interpolate', () => {
+    test('interpolate', () => {
         expect(
-            equalLatLngs(
-                interpolate(places.newyork, places.sydney, 0.7),
-                googleMaps['interpolate(newyork, sydney, 0.7)'],
-            ),
-        ).toBe(true);
+            interpolate(places.newyork, places.sydney, 0.7).toJSON(),
+        ).toEqual(googleMaps['interpolate(newyork, sydney, 0.7)']);
     });
 });

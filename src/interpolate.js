@@ -1,5 +1,5 @@
 import LatLng, { convert } from './latlng.js';
-import computeDistanceBetween from './compute-distance-between.js';
+import { computeDistanceBetweenHelper } from './compute-distance-between.js';
 import { toRadians, toDegrees } from './utils.js';
 
 /**
@@ -14,17 +14,16 @@ export default function interpolate(from, to, fraction) {
     from = convert(from);
     to = convert(to);
     const radFromLat = toRadians(from.lat()),
-        radFromLng = toRadians(from.lng());
-    const radToLat = toRadians(to.lat()),
-        radToLng = toRadians(to.lng());
-
-    const cosFromLat = Math.cos(radFromLat),
+        radFromLng = toRadians(from.lng()),
+        radToLat = toRadians(to.lat()),
+        radToLng = toRadians(to.lng()),
+        cosFromLat = Math.cos(radFromLat),
         cosToLat = Math.cos(radToLat);
 
-    const radDist = computeDistanceBetween(from, to);
+    const radDist = computeDistanceBetweenHelper(from, to);
     const sinRadDist = Math.sin(radDist);
 
-    if (sinRadDist < 1e-6) return from;
+    if (1e-6 > sinRadDist) return from;
 
     const a = Math.sin((1 - fraction) * radDist) / sinRadDist;
     const b = Math.sin(fraction * radDist) / sinRadDist;

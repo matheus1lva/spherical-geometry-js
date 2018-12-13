@@ -152,7 +152,7 @@ export function computeSignedArea(
  * @param to Ending point
  * @param fraction Percentage from [0, 1].
  */
-export default function interpolate(
+export function interpolate(
     from: LatLngLike,
     to: LatLngLike,
     fraction: number,

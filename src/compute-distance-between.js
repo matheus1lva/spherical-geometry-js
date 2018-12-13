@@ -1,6 +1,24 @@
 import { EARTH_RADIUS, toRadians } from './utils.js';
 import { convert } from './latlng.js';
 
+export function computeDistanceBetweenHelper(from, to) {
+    const radFromLat = toRadians(from.lat()),
+        radFromLng = toRadians(from.lng());
+    const radToLat = toRadians(to.lat()),
+        radToLng = toRadians(to.lng());
+    return (
+        2 *
+        Math.asin(
+            Math.sqrt(
+                Math.pow(Math.sin((radFromLat - radToLat) / 2), 2) +
+                    Math.cos(radFromLat) *
+                        Math.cos(radToLat) *
+                        Math.pow(Math.sin((radFromLng - radToLng) / 2), 2),
+            ),
+        )
+    );
+}
+
 /**
  * Returns the distance, in meters, between to LatLngs. You can optionally
  * specify a custom radius. The radius defaults to the radius of the Earth.
@@ -16,20 +34,5 @@ export default function computeDistanceBetween(
 ) {
     from = convert(from);
     to = convert(to);
-    const radFromLat = toRadians(from.lat()),
-        radFromLng = toRadians(from.lng());
-    const radToLat = toRadians(to.lat()),
-        radToLng = toRadians(to.lng());
-    return (
-        2 *
-        Math.asin(
-            Math.sqrt(
-                Math.pow(Math.sin((radFromLat - radToLat) / 2), 2) +
-                    Math.cos(radFromLat) *
-                        Math.cos(radToLat) *
-                        Math.pow(Math.sin((radFromLng - radToLng) / 2), 2),
-            ),
-        ) *
-        radius
-    );
+    return computeDistanceBetweenHelper(from, to) * radius;
 }

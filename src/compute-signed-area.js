@@ -1,5 +1,5 @@
 import { EARTH_RADIUS, toRadians } from './utils.js';
-import computeDistanceBetween from './compute-distance-between.js';
+import { computeDistanceBetweenHelper } from './compute-distance-between.js';
 import { convert } from './latlng.js';
 
 /**
@@ -37,7 +37,7 @@ export function computeSphericalExcess(polygon, options = {}) {
         sumOfDistances = 0;
 
     for (let i = 0; i < polygon.length - 1; i++) {
-        distances[i] = computeDistanceBetween(polygon[i], polygon[i + 1], 1);
+        distances[i] = computeDistanceBetweenHelper(polygon[i], polygon[i + 1]);
         sumOfDistances += distances[i];
     }
 

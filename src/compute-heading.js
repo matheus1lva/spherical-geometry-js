@@ -1,7 +1,10 @@
 import { convert } from './latlng.js';
 import { toRadians, toDegrees } from './utils.js';
 
-const fmod = (a, b) => Number((a - Math.floor(a / b) * b).toPrecision(8));
+function fmod(angle, start, end) {
+    end -= start;
+    return ((((angle - start) % end) + end) % end) + start;
+}
 
 /**
  * Returns the heading from one LatLng to another LatLng. Headings are expressed
@@ -13,9 +16,10 @@ const fmod = (a, b) => Number((a - Math.floor(a / b) * b).toPrecision(8));
 export default function computeHeading(from, to) {
     from = convert(from);
     to = convert(to);
-    const fromLat = toRadians(from.lat()),
-        toLat = toRadians(to.lat()),
-        deltaLng = toRadians(to.lng()) - toRadians(from.lng());
+
+    const fromLat = toRadians(from.lat());
+    const toLat = toRadians(to.lat());
+    const deltaLng = toRadians(to.lng()) - toRadians(from.lng());
 
     const angle = toDegrees(
         Math.atan2(
@@ -25,6 +29,5 @@ export default function computeHeading(from, to) {
         ),
     );
 
-    if (angle === 180) return angle;
-    else return fmod(fmod(angle - -180, 360) + 360, 360) + -180;
+    return fmod(angle, -180, 180);
 }
