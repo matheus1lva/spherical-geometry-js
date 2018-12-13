@@ -1,5 +1,4 @@
-import { computeSphericalExcess } from './compute-signed-area.js';
-import { convert } from './latlng.js';
+import computeSignedArea from './compute-signed-area.js';
 import { EARTH_RADIUS } from './utils.js';
 
 /**
@@ -11,14 +10,5 @@ import { EARTH_RADIUS } from './utils.js';
  * @returns {number} area
  */
 export default function computeArea(path, radius = EARTH_RADIUS) {
-    if (path.length < 3) return 0;
-    path = path.map(v => convert(v));
-
-    let e = 0;
-    for (let i = 1; i < path.length - 1; i++)
-        e += computeSphericalExcess([path[0], path[i], path[i + 1]], {
-            signed: false,
-        });
-
-    return e * Math.pow(radius, 2);
+    return Math.abs(computeSignedArea(path, radius));
 }

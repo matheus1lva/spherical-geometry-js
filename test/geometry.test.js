@@ -12,7 +12,7 @@ const places = require('./data/places');
 const googleMaps = require('./data/google-maps.json');
 
 describe('Spherical geometry Google Maps', () => {
-    test.skip('computeArea', () => {
+    test('computeArea', () => {
         expect(
             computeArea([places.london, places.donostia, places.newyork]),
         ).toBeCloseTo(googleMaps['computeArea(london, donostia, newyork)']);
@@ -56,7 +56,7 @@ describe('Spherical geometry Google Maps', () => {
         ).toBe(true);
     });
 
-    test.skip('computeSignedArea', () => {
+    test('computeSignedArea', () => {
         expect(
             computeSignedArea([places.london, places.donostia, places.newyork]),
         ).toBeCloseTo(
