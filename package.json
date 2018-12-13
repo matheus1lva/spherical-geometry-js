@@ -15,9 +15,8 @@
         "pretest": "npm run build",
         "test": "jest",
         "build": "rollup -c",
-        "docs": "rollup src/index.js -f esm | jsdoc2md > API.md",
-        "lint": "prettier \"src/**/*.js\" --write",
-        "lint:check": "prettier \"src/**/*.js\" --list-different"
+        "lint": "prettier \"src/**/*.js\" \"test/**/*.js\" --write",
+        "lint:check": "prettier \"src/**/*.js\" \"src/**/*.js\" --list-different"
     },
     "keywords": [
         "google",
@@ -38,13 +37,8 @@
         "@types/jest": "^23.3.10",
         "husky": "^1.2.0",
         "jest": "^23.6.0",
-        "jsdoc-to-markdown": "^1.3.9",
-        "karma": "^3.1.3",
-        "karma-chrome-launcher": "^2.2.0",
         "prettier": "^1.15.3",
         "rollup": "^0.67.4",
-        "tape": "^4.6.0",
-        "tape-dom": "0.0.12",
         "ts-jest": "^23.10.5",
         "typescript": "^3.2.1"
     },
