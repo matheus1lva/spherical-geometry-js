@@ -67,16 +67,39 @@ export class LatLng {
     toUrlValue(precision?: number): string;
 }
 
+/**
+ * Types that can be automatically converted into a LatLng using the
+ * `convertLatLng` function. Other library functions automatically
+ * convert your inputs so you don't need to call convert yourself.
+ */
 type LatLngLike =
     | LatLng
     | { lat(): number; lng(): number }
     | { lat: string | number; lng: string | number }
     | { lat: string | number; long: string | number }
     | [number, number]
+    | { 0: number; 1: number }
     | { x: string | number; y: string | number };
 
+/**
+ * Converts an object into a LatLng. Tries a few different methods:
+ * 1. If instanceof LatLng, clone the object and return it.
+ * 2. If it has 'lat' and 'lng' properties...
+ *    2a. if the properties are functions (like Google LatLngs),
+ *        use the lat() and lng() values as latitude and longitude.
+ *    2b. otherwise get lat and lng, parse them as floats and use them
+ * 3. If it has 'lat' and *'long'* properties,
+ *    parse them as floats and return a LatLng
+ * 4. If it has number values for 0 and 1 (aka an array of two numbers),
+ *    use 1 as latitude and 0 as longitude.
+ * 5. If it has x and y properties, try using y as latitude and x and
+ *    longitude.
+ */
 export function convertLatLng(like: LatLngLike): LatLng;
 
+/**
+ * Compares two different coordinates.
+ */
 export function equalLatLngs(one: LatLngLike, two: LatLngLike): boolean;
 
 /**
@@ -88,7 +111,7 @@ export function equalLatLngs(one: LatLngLike, two: LatLngLike): boolean;
  */
 export function computeArea(
     path: ReadonlyArray<LatLngLike>,
-    radius?: number,
+    radius?: number
 ): number;
 
 /**
@@ -101,7 +124,7 @@ export function computeArea(
 export function computeDistanceBetween(
     from: LatLngLike,
     to: LatLngLike,
-    radius?: number,
+    radius?: number
 ): number;
 
 /**
@@ -117,7 +140,7 @@ export function computeHeading(from: LatLngLike, to: LatLngLike): number;
  */
 export function computeLength(
     path: ReadonlyArray<LatLngLike>,
-    radius?: number,
+    radius?: number
 ): number;
 
 /**
@@ -129,7 +152,7 @@ export function computeOffset(
     from: LatLngLike,
     distance: number,
     heading: number,
-    radius?: number,
+    radius?: number
 ): LatLng;
 
 /**
@@ -142,7 +165,7 @@ export function computeOffset(
  */
 export function computeSignedArea(
     loop: ReadonlyArray<LatLngLike>,
-    radius?: number,
+    radius?: number
 ): number;
 
 /**
@@ -155,5 +178,5 @@ export function computeSignedArea(
 export function interpolate(
     from: LatLngLike,
     to: LatLngLike,
-    fraction: number,
+    fraction: number
 ): LatLng;
