@@ -25,8 +25,8 @@ export default function computeHeading(from, to) {
         Math.atan2(
             Math.sin(deltaLng) * Math.cos(toLat),
             Math.cos(fromLat) * Math.sin(toLat) -
-                Math.sin(fromLat) * Math.cos(toLat) * Math.cos(deltaLng),
-        ),
+                Math.sin(fromLat) * Math.cos(toLat) * Math.cos(deltaLng)
+        )
     );
 
     return fmod(angle, -180, 180);

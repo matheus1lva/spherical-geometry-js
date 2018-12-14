@@ -14,23 +14,23 @@ const googleMaps = require('./data/google-maps.json');
 describe('Spherical geometry Google Maps', () => {
     test('computeArea', () => {
         expect(
-            computeArea([places.london, places.donostia, places.newyork]),
+            computeArea([places.london, places.donostia, places.newyork])
         ).toBeCloseTo(googleMaps['computeArea(london, donostia, newyork)']);
 
         expect(computeArea(places.path)).toBeCloseTo(
-            googleMaps['computeArea(...path)'],
+            googleMaps['computeArea(...path)']
         );
     });
 
     test('computeDistanceBetween', () => {
         expect(
-            computeDistanceBetween(places.london, places.newyork),
+            computeDistanceBetween(places.london, places.newyork)
         ).toBeCloseTo(googleMaps['computeDistanceBetween(london, newyork)']);
     });
 
     test('computeHeading', () => {
         expect(computeHeading(places.london, places.newyork)).toBeCloseTo(
-            googleMaps['computeHeading(london, newyork)'],
+            googleMaps['computeHeading(london, newyork)']
         );
     });
 
@@ -41,9 +41,9 @@ describe('Spherical geometry Google Maps', () => {
                 places.newyork,
                 places.moscow,
                 places.sydney,
-            ]),
+            ])
         ).toBeCloseTo(
-            googleMaps['computeLength(london, newyork, moscow, sydney)'],
+            googleMaps['computeLength(london, newyork, moscow, sydney)']
         );
     });
 
@@ -51,22 +51,22 @@ describe('Spherical geometry Google Maps', () => {
         expect(
             equalLatLngs(
                 computeOffset(places.london, 5576353.232683, -71.669371),
-                googleMaps['computeOffset(london, 5576353.232683, -71.669371)'],
-            ),
+                googleMaps['computeOffset(london, 5576353.232683, -71.669371)']
+            )
         ).toBe(true);
     });
 
     test('computeSignedArea', () => {
         expect(
-            computeSignedArea([places.london, places.donostia, places.newyork]),
+            computeSignedArea([places.london, places.donostia, places.newyork])
         ).toBeCloseTo(
-            googleMaps['computeSignedArea(london, donostia, newyork)'],
+            googleMaps['computeSignedArea(london, donostia, newyork)']
         );
     });
 
     test('interpolate', () => {
         expect(
-            interpolate(places.newyork, places.sydney, 0.7).toJSON(),
+            interpolate(places.newyork, places.sydney, 0.7).toJSON()
         ).toEqual(googleMaps['interpolate(newyork, sydney, 0.7)']);
     });
 });

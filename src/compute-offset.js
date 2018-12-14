@@ -14,7 +14,7 @@ export default function computeOffset(
     from,
     distance,
     heading,
-    radius = EARTH_RADIUS,
+    radius = EARTH_RADIUS
 ) {
     from = convert(from);
     distance /= radius;
@@ -34,8 +34,8 @@ export default function computeOffset(
             toRadians(from.lng()) +
                 Math.atan2(
                     sinDistance * cosFromLat * Math.sin(heading),
-                    cosDistance - sinFromLat * sc,
-                ),
-        ),
+                    cosDistance - sinFromLat * sc
+                )
+        )
     );
 }

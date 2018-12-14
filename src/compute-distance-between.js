@@ -13,8 +13,8 @@ export function computeDistanceBetweenHelper(from, to) {
                 Math.pow(Math.sin((radFromLat - radToLat) / 2), 2) +
                     Math.cos(radFromLat) *
                         Math.cos(radToLat) *
-                        Math.pow(Math.sin((radFromLng - radToLng) / 2), 2),
-            ),
+                        Math.pow(Math.sin((radFromLng - radToLng) / 2), 2)
+            )
         )
     );
 }
@@ -30,7 +30,7 @@ export function computeDistanceBetweenHelper(from, to) {
 export default function computeDistanceBetween(
     from,
     to,
-    radius = EARTH_RADIUS,
+    radius = EARTH_RADIUS
 ) {
     from = convert(from);
     to = convert(to);

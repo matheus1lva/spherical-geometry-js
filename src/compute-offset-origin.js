@@ -17,7 +17,7 @@ export default function computeOffset(
     to,
     distance,
     heading,
-    radius = EARTH_RADIUS,
+    radius = EARTH_RADIUS
 ) {
     throw Error('computeOffset not implemented');
 }

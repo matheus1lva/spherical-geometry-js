@@ -73,7 +73,7 @@ describe('equalLatLngs', () => {
     it('should be equal to LatLngLiteral version', () => {
         expect(equalLatLngs(places.sydney, places.sydney.toJSON())).toBe(true);
         expect(equalLatLngs(places.sydney, places.buenosaires.toJSON())).toBe(
-            false,
+            false
         );
     });
 });
