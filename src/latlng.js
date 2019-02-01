@@ -82,6 +82,8 @@ export default class LatLng {
         Object.defineProperty(this, LAT, { value: lat });
         Object.defineProperty(this, LNG, { value: lng });
         this.length = 2;
+
+        Object.freeze(this);
     }
 
     /**

@@ -49,6 +49,8 @@ export class LatLng {
     /** alias for lng */
     readonly long: number;
 
+    readonly length: 2;
+
     /**
      * Converts to JSON representation. This function is intended to be used via
      * JSON.stringify.
@@ -154,6 +156,20 @@ export function computeOffset(
     heading: number,
     radius?: number
 ): LatLng;
+
+/**
+ * Returns the location of origin when provided with a LatLng destination,
+ * meters travelled and original heading. Headings are expressed in degrees
+ * clockwise from North. This function returns null when no solution is
+ * available.
+ * @param radius Radius of planet.
+ */
+export function computeOffsetOrigin(
+    to: LatLngLike,
+    distance: number,
+    heading: number,
+    radius?: number
+): LatLng | null;
 
 /**
  * Returns the signed area of a closed path. The signed area may be used to

@@ -39,6 +39,14 @@ describe('LatLng', () => {
         expect(places.sydney.equals(places.buenosaires.toJSON())).toBe(false);
     });
 
+    it('should work with Array.from', () => {
+        const arr = Array.from(places.sydney);
+        expect(arr[0]).toBeCloseTo(151.20689);
+        expect(arr[1]).toBeCloseTo(-33.873651);
+        expect(arr.length).toBe(2);
+        expect(Array.isArray(arr)).toBe(true);
+    });
+
     const points = [
         places.donostia,
         places.london,

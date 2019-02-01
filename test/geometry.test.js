@@ -4,6 +4,7 @@ const {
     computeHeading,
     computeLength,
     computeOffset,
+    computeOffsetOrigin,
     computeSignedArea,
     interpolate,
     equalLatLngs,
@@ -52,6 +53,33 @@ describe('Spherical geometry Google Maps', () => {
             equalLatLngs(
                 computeOffset(places.london, 5576353.232683, -71.669371),
                 googleMaps['computeOffset(london, 5576353.232683, -71.669371)']
+            )
+        ).toBe(true);
+    });
+
+    test('computeOffsetOrigin', () => {
+        /**
+         * @param {any} a
+         * @param {any} b
+         */
+        function equal(a, b) {
+            if (a == null && b == null) return true;
+            if (a == null || b == null) return false;
+            return equalLatLngs(a, b);
+        }
+
+        expect(
+            equal(
+                computeOffsetOrigin(places.london, 3000, 10),
+                googleMaps['computeOffsetOrigin(london, 3000, 10)']
+            )
+        ).toBe(true);
+        expect(
+            equal(
+                computeOffsetOrigin(places.london, 5576353.232683, -71.669371),
+                googleMaps[
+                    'computeOffsetOrigin(london, 5576353.232683, -71.669371)'
+                ]
             )
         ).toBe(true);
     });

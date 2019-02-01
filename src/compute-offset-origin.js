@@ -1,4 +1,4 @@
-import { EARTH_RADIUS } from './utils.js';
+import { EARTH_RADIUS, toRadians, toDegrees } from './utils.js';
 import LatLng, { convert } from './latlng.js';
 
 /**
@@ -13,11 +13,57 @@ import LatLng, { convert } from './latlng.js';
  * @param {number} [radius]
  * @returns {LatLng}
  */
-export default function computeOffset(
+export default function computeOffsetOrigin(
     to,
     distance,
     heading,
     radius = EARTH_RADIUS
 ) {
-    throw Error('computeOffset not implemented');
+    to = convert(to);
+    distance /= radius;
+    heading = toRadians(heading);
+
+    const quarterRadian = Math.PI / 2;
+    const toLat = toRadians(to.lat());
+    const toLng = toRadians(to.lng());
+
+    const cosDistance = Math.cos(distance);
+    const sinDistance = Math.sin(distance);
+    const lngHeading = Math.cos(heading);
+    const latHeading = Math.sin(heading);
+    const lngSinHeading = sinDistance * lngHeading;
+    const latSinHeading = sinDistance * latHeading;
+    const sinToLat = Math.sin(toLat);
+
+    const lngSinHeadingSquared = lngSinHeading * lngSinHeading;
+    const cosDistanceSquared = cosDistance * cosDistance;
+    // A function to complex I had more trouble with variable names
+    const lotsOfMathSquared =
+        lngSinHeadingSquared * cosDistanceSquared +
+        cosDistanceSquared * cosDistanceSquared -
+        cosDistanceSquared * sinToLat * sinToLat;
+    if (0 > lotsOfMathSquared) return null;
+    const lotsOfMath = Math.sqrt(lotsOfMathSquared);
+
+    const distByLng = cosDistanceSquared + lngSinHeadingSquared;
+    const moreMath = (lngSinHeading * sinToLat + lotsOfMath) / distByLng;
+    const evenMoreMath = (sinToLat - lngSinHeading * moreMath) / cosDistance;
+    let latRadian = Math.atan2(evenMoreMath, moreMath);
+    if (latRadian < -quarterRadian || latRadian > quarterRadian) {
+        latRadian = lngSinHeading * sinToLat - lotsOfMath;
+        latRadian = Math.atan2(evenMoreMath, latRadian / distByLng);
+    }
+    if (latRadian < -quarterRadian || latRadian > quarterRadian) return null;
+
+    return new LatLng(
+        toDegrees(latRadian),
+        toDegrees(
+            toLng -
+                Math.atan2(
+                    latSinHeading,
+                    cosDistance * Math.cos(latRadian) -
+                        lngSinHeading * Math.sin(latRadian)
+                )
+        )
+    );
 }

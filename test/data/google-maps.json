@@ -10,6 +10,11 @@
         "lat": 40.7141697137413,
         "lng": -74.00638969648946
     },
+    "computeOffsetOrigin(london, 3000, 10)": {
+        "lat": 51.48158920457813,
+        "lng": -0.13552379365000888
+    },
+    "computeOffsetOrigin(london, 5576353.232683, -71.669371)": null,
     "computeSignedArea(london, donostia, newyork)": -2732840962615.0713,
     "interpolate(newyork, sydney, 0.7)": {
         "lat": -9.918509273080291,

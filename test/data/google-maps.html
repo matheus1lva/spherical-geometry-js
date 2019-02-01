@@ -23,15 +23,15 @@
         'toUrlValue()': googlePlaces.sydney.toUrlValue(),
         'toUrlValue(3)': googlePlaces.sydney.toUrlValue(3),
         'computeArea(london, donostia, newyork)': google.maps.geometry.spherical.computeArea(
-            [googlePlaces.london, googlePlaces.donostia, googlePlaces.newyork],
+            [googlePlaces.london, googlePlaces.donostia, googlePlaces.newyork]
         ),
         'computeDistanceBetween(london, newyork)': google.maps.geometry.spherical.computeDistanceBetween(
             googlePlaces.london,
-            googlePlaces.newyork,
+            googlePlaces.newyork
         ),
         'computeHeading(london, newyork)': google.maps.geometry.spherical.computeHeading(
             googlePlaces.london,
-            googlePlaces.newyork,
+            googlePlaces.newyork
         ),
         'computeLength(london, newyork, moscow, sydney)': google.maps.geometry.spherical.computeLength(
             [
@@ -39,23 +39,33 @@
                 googlePlaces.newyork,
                 googlePlaces.moscow,
                 googlePlaces.sydney,
-            ],
+            ]
         ),
         'computeOffset(london, 5576353.232683, -71.669371)': google.maps.geometry.spherical.computeOffset(
             googlePlaces.london,
             5576353.232683,
-            -71.669371,
+            -71.669371
+        ),
+        'computeOffsetOrigin(london, 3000, 10)': google.maps.geometry.spherical.computeOffsetOrigin(
+            googlePlaces.london,
+            3000,
+            10
+        ),
+        'computeOffsetOrigin(london, 5576353.232683, -71.669371)': google.maps.geometry.spherical.computeOffsetOrigin(
+            googlePlaces.london,
+            5576353.232683,
+            -71.669371
         ),
         'computeSignedArea(london, donostia, newyork)': google.maps.geometry.spherical.computeSignedArea(
-            [googlePlaces.london, googlePlaces.donostia, googlePlaces.newyork],
+            [googlePlaces.london, googlePlaces.donostia, googlePlaces.newyork]
         ),
         'interpolate(newyork, sydney, 0.7)': google.maps.geometry.spherical.interpolate(
             googlePlaces.newyork,
             googlePlaces.sydney,
-            0.7,
+            0.7
         ),
         'computeArea(...path)': google.maps.geometry.spherical.computeArea(
-            googlePlaces.path,
+            googlePlaces.path
         ),
     };
 

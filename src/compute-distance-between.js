@@ -2,10 +2,10 @@ import { EARTH_RADIUS, toRadians } from './utils.js';
 import { convert } from './latlng.js';
 
 export function computeDistanceBetweenHelper(from, to) {
-    const radFromLat = toRadians(from.lat()),
-        radFromLng = toRadians(from.lng());
-    const radToLat = toRadians(to.lat()),
-        radToLng = toRadians(to.lng());
+    const radFromLat = toRadians(from.lat());
+    const radFromLng = toRadians(from.lng());
+    const radToLat = toRadians(to.lat());
+    const radToLng = toRadians(to.lng());
     return (
         2 *
         Math.asin(

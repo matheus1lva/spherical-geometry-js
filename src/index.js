@@ -12,7 +12,7 @@ export {
 export { default as computeHeading } from './compute-heading.js';
 export { default as computeLength } from './compute-length.js';
 export { default as computeOffset } from './compute-offset.js';
-//export {default as computeOffsetOrigin} from './compute-offset-origin.js';
+export { default as computeOffsetOrigin } from './compute-offset-origin.js';
 export { default as computeSignedArea } from './compute-signed-area.js';
 export { default as interpolate } from './interpolate.js';
 

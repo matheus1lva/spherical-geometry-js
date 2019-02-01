@@ -27,7 +27,6 @@ Notes:
 -   The API is nearly identical to the Google Maps Javascript API.
 -   Functions automatically convert coordinate objects into `LatLng`s. See
     [`convertLatLng`](#convertlatlnglike--latlng) for more details.
--   `computeOffsetOrigin` has not yet been implemented
 -   All computed lengths are returned in **meters**.
 
 ## API

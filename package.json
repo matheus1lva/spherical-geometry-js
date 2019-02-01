@@ -1,6 +1,6 @@
 {
     "name": "spherical-geometry-js",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "description": "This library provides classes and functions for the computation of geometric data on the surface of the Earth. Code ported from the Google Maps Javascript API v3 and tubalmartin/spherical-geometry-php",
     "license": "MIT",
     "author": "Tiger Oakes <contact@tigeroakes.com> (https://tigeroakes.com)",
@@ -16,7 +16,7 @@
         "test": "jest",
         "build": "rollup -c",
         "lint": "prettier \"src/**/*.js\" \"test/**/*.js\" --write",
-        "lint:check": "prettier \"src/**/*.js\" \"src/**/*.js\" --list-different"
+        "lint:check": "prettier \"src/**/*.js\" \"test/**/*.js\" --check"
     },
     "keywords": [
         "google",
@@ -34,13 +34,13 @@
         "geometric"
     ],
     "devDependencies": {
-        "@types/jest": "^23.3.11",
+        "@types/jest": "^23.3.13",
         "husky": "^1.3.1",
         "jest": "^23.6.0",
-        "prettier": "^1.15.3",
-        "rollup": "^1.0.0",
+        "prettier": "^1.16.3",
+        "rollup": "^1.1.2",
         "ts-jest": "^23.10.5",
-        "typescript": "^3.2.1"
+        "typescript": "^3.3.1"
     },
     "jest": {},
     "husky": {
