@@ -59,6 +59,7 @@ describe('LatLng', () => {
     it('should alias latitude', () => {
         for (const place of points) {
             expect(place.lat()).toBe(place.y);
+            expect(place.lat()).toBe(place.latitude);
             expect(place.lat()).toBe(place[1]);
         }
     });
@@ -68,6 +69,8 @@ describe('LatLng', () => {
             expect(place.lng()).toBe(place.x);
             expect(place.lng()).toBe(place[0]);
             expect(place.lng()).toBe(place.long);
+            expect(place.lng()).toBe(place.lon);
+            expect(place.lng()).toBe(place.longitude);
         }
     });
 });
@@ -91,5 +94,63 @@ describe('covertLatLng', () => {
         const copy = convertLatLng(places.sydney);
         expect(copy).not.toBe(places.sydney);
         expect(copy.equals(places.sydney)).toBe(true);
+    });
+
+    it('should convert Google Maps LatLngs', () => {
+        const fakeGoogleMapsLatLng = {
+            lat() {
+                return places.london.lat();
+            },
+            lng() {
+                return places.london.lng();
+            },
+        };
+        expect(convertLatLng(fakeGoogleMapsLatLng)).toEqual(places.london);
+    });
+
+    it('should convert Google Maps LatLngLiterals', () => {
+        const fakeGoogleMapsLatLng = {
+            lat: places.london.lat(),
+            lng: places.london.lng(),
+        };
+        expect(convertLatLng(fakeGoogleMapsLatLng)).toEqual(places.london);
+    });
+
+    it('should convert GTFS objects', () => {
+        const gtfsStopPoint = {
+            lat: places.newyork.lat(),
+            lon: places.newyork.lng(),
+        };
+        expect(convertLatLng(gtfsStopPoint)).toEqual(places.newyork);
+    });
+
+    it('should convert Javascript Coordinates from Geolocation API', () => {
+        const coords = {
+            latitude: places.newyork.lat(),
+            longitude: places.newyork.lng(),
+        };
+        expect(convertLatLng(coords)).toEqual(places.newyork);
+    });
+
+    it('should convert GeoJSON', () => {
+        /** @type {[number, number]} */
+        const geoJson = [places.newyork.lng(), places.newyork.lat()];
+        expect(convertLatLng(geoJson)).toEqual(places.newyork);
+    });
+
+    it("should convert GeoJSON that's sort of an array", () => {
+        const geoJson = {
+            0: places.newyork.lng(),
+            1: places.newyork.lat(),
+        };
+        expect(convertLatLng(geoJson)).toEqual(places.newyork);
+    });
+
+    it('should convert objects with x and y', () => {
+        const place = {
+            x: places.newyork.lng(),
+            y: places.newyork.lat(),
+        };
+        expect(convertLatLng(place)).toEqual(places.newyork);
     });
 });

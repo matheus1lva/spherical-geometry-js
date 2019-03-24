@@ -5,6 +5,7 @@ const LNG = Symbol('Longitude');
  * Shorthand for Object#hasOwnProperty
  * @param {object} obj
  * @param {string | symbol} prop
+ * @returns {boolean}
  */
 const has = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
 
@@ -17,17 +18,22 @@ const has = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
  *    2b. otherwise get lat and lng, parse them as floats and try them
  * 3. If it has 'lat' and *'long'* properties,
  *    parse them as floats and return a LatLng
- * 4. If it has number values for 0 and 1, use 1 as latitude and 0
+ * 4. If it has 'lat' and *'lon'* properties,
+ *    parse them as floats and return a LatLng
+ * 5. If it has 'latitude' and 'longitude' properties,
+ *    parse them as floats and return a LatLng
+ * 6. If it has number values for 0 and 1, use 1 as latitude and 0
  *    as longitude.
- * 5. If it has x and y properties, try using y as latitude and x and
+ * 7. If it has x and y properties, try using y as latitude and x and
  *    longitude.
  * @param {any} like
  * @param {function} [Class=LatLng]
  * @returns {LatLng}
  */
 export function convert(like, Class = LatLng) {
-    if (like instanceof LatLng) return new Class(like[LAT], like[LNG]);
-    else if (has(like, 'lat') && has(like, 'lng')) {
+    if (like instanceof LatLng) {
+        return new Class(like[LAT], like[LNG]);
+    } else if (has(like, 'lat') && has(like, 'lng')) {
         if (typeof like.lat == 'function' && typeof like.lng == 'function') {
             return new Class(like.lat(), like.lng());
         } else {
@@ -35,6 +41,10 @@ export function convert(like, Class = LatLng) {
         }
     } else if (has(like, 'lat') && has(like, 'long')) {
         return new Class(parseFloat(like.lat), parseFloat(like.long));
+    } else if (has(like, 'lat') && has(like, 'lon')) {
+        return new Class(parseFloat(like.lat), parseFloat(like.lon));
+    } else if (has(like, 'latitude') && has(like, 'longitude')) {
+        return new Class(parseFloat(like.latitude), parseFloat(like.longitude));
     } else if (typeof like[0] === 'number' && typeof like[1] === 'number') {
         return new Class(like[1], like[0]);
     } else if (has(like, 'x') && has(like, 'y')) {
@@ -59,7 +69,6 @@ export function equals(one, two) {
 
 export default class LatLng {
     /**
-     *
      * @param {number} lat
      * @param {number} lng
      * @param {boolean} noWrap
@@ -121,6 +130,14 @@ export default class LatLng {
     get y() {
         return this[LAT];
     }
+    /** @type {number} alias for lat */
+    get latitude() {
+        return this[LAT];
+    }
+    /** @type {number} alias for lng */
+    get longitude() {
+        return this[LNG];
+    }
     /** @type {number} alias for lng */
     get 0() {
         return this[LNG];
@@ -131,6 +148,10 @@ export default class LatLng {
     }
     /** @type {number} alias for lng */
     get long() {
+        return this[LNG];
+    }
+    /** @type {number} alias for lng */
+    get lon() {
         return this[LNG];
     }
 

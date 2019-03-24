@@ -42,12 +42,18 @@ export class LatLng {
     readonly x: number;
     /** alias for lat */
     readonly y: number;
+    /** alias for lat */
+    readonly latitude: number;
+    /** alias for lng */
+    readonly longitude: number;
     /** alias for lng */
     readonly 0: number;
     /** alias for lat */
     readonly 1: number;
     /** alias for lng */
     readonly long: number;
+    /** alias for lng */
+    readonly lon: number;
 
     readonly length: 2;
 
@@ -79,6 +85,8 @@ type LatLngLike =
     | { lat(): number; lng(): number }
     | { lat: string | number; lng: string | number }
     | { lat: string | number; long: string | number }
+    | { lat: string | number; lon: string | number }
+    | { latitude: string | number; longitude: string | number }
     | [number, number]
     | { 0: number; 1: number }
     | { x: string | number; y: string | number };
@@ -92,9 +100,13 @@ type LatLngLike =
  *    2b. otherwise get lat and lng, parse them as floats and use them
  * 3. If it has 'lat' and *'long'* properties,
  *    parse them as floats and return a LatLng
- * 4. If it has number values for 0 and 1 (aka an array of two numbers),
- *    use 1 as latitude and 0 as longitude.
- * 5. If it has x and y properties, try using y as latitude and x and
+ * 4. If it has 'lat' and *'lon'* properties,
+ *    parse them as floats and return a LatLng
+ * 5. If it has 'latitude' and 'longitude' properties,
+ *    parse them as floats and return a LatLng
+ * 6. If it has number values for 0 and 1, use 1 as latitude and 0
+ *    as longitude.
+ * 7. If it has x and y properties, try using y as latitude and x and
  *    longitude.
  */
 export function convertLatLng(like: LatLngLike): LatLng;
