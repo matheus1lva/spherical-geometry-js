@@ -158,7 +158,7 @@ export default class LatLng {
     /**
      * Converts to JSON representation. This function is intended to be used via
      * JSON.stringify.
-     * @returns {Object} LatLngLiteral
+     * @returns {LatLngLiteral}
      */
     toJSON() {
         return { lat: this[LAT], lng: this[LNG] };

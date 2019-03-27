@@ -1,8 +1,7 @@
 /**
- * Spherical Geometry Library v2.0.0
+ * Spherical Geometry Library v1.4.0
  * This code is a port of some classes from the Google Maps Javascript API
  * @module spherical-geometry
- * @todo computeOffsetOrigin
  */
 
 export { default as computeArea } from './compute-area.js';
@@ -21,4 +20,5 @@ export {
     convert as convertLatLng,
     equals as equalLatLngs,
 } from './latlng.js';
+export { default as LatLngBounds } from './latlng-bounds.js';
 export * from './utils.js';

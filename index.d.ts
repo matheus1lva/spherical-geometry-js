@@ -208,3 +208,66 @@ export function interpolate(
     to: LatLngLike,
     fraction: number
 ): LatLng;
+
+export interface LatLngBoundsLiteral {
+    east: number;
+    north: number;
+    south: number;
+    west: number;
+}
+
+export class LatLngBounds {
+    constructor(southwest?: LatLngLike, northeast?: LatLngLike);
+
+    /**
+     * Check if point is within bounds.
+     */
+    contains(latlng: LatLngLike): boolean;
+
+    /**
+     * Check if two bounds are equal.
+     * @param {LatLngBounds} other
+     * @returns {boolean}
+     */
+    equals(other: LatLngBounds): boolean;
+
+    /**
+     * Mutate the bounds to include the given point.
+     */
+    extend(point: LatLngLike): this;
+
+    /**
+     * Computes and returns the center point of the bounds.
+     */
+    getCenter(): LatLng;
+
+    getNorthEast(): LatLng;
+
+    getSouthWest(): LatLng;
+
+    /**
+     * Check if two bounds intersect at all.
+     */
+    intersects(other: LatLngBounds): boolean;
+
+    /**
+     * Return true if the southwest and northeast corners are equal.
+     */
+    isEmpty(): boolean;
+
+    /**
+     * Convert into a LatLngBoundsLiteral.
+     */
+    toJSON(): LatLngBoundsLiteral;
+
+    toSpan(): never;
+
+    toString(): string;
+
+    toUrlValue(precision?: number): string;
+
+    /**
+     * Mutate the bounds to include the other bounds.
+     */
+    union(other: LatLngBounds): this;
+}

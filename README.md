@@ -83,7 +83,10 @@ different methods:
     2b. otherwise get `lat` and `lng`, parse them as floats and use them.
 
 3. If it has `lat` and _`long`_ properties, parse them as floats use them.
-4. If it has number values for `0` and `1` (aka an array of two numbers), use
+4. If it has `lat` and _`lon`_ properties, parse them as floats use them.
+5. If it has `latitude` and `longitude` properties, parse them as floats use
+   them.
+6. If it has number values for `0` and `1` (aka an array of two numbers), use
    `1` as latitude and `0` as longitude.
-5. If it has `x` and `y` properties, try using `y` as latitude and `x` and
+7. If it has `x` and `y` properties, try using `y` as latitude and `x` and
    longitude.
