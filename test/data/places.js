@@ -1,4 +1,4 @@
-const { LatLng } = require('../../');
+const { LatLng, LatLngBounds } = require('../../');
 
 module.exports = {
     donostia: new LatLng(43.320812, -1.984447),
@@ -13,4 +13,16 @@ module.exports = {
         new LatLng(44.39450050731302, -79.69500459730625),
         new LatLng(44.39456351370196, -79.6948466822505),
     ],
+    bigIsland: new LatLngBounds(
+        new LatLng(18.719955, -156.007002),
+        new LatLng(20.297632, -154.714628)
+    ),
+    hawaii: new LatLngBounds(
+        new LatLng(18.850912, -160.66249),
+        new LatLng(22.240875, -153.791741)
+    ),
+    oahu: new LatLngBounds(
+        new LatLng(21.235191, -158.326847),
+        new LatLng(21.744683, -157.57099)
+    ),
 };

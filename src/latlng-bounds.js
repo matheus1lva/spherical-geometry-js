@@ -30,14 +30,28 @@ export default class LatLngBounds {
 
     /**
      * Check if two bounds are equal.
-     * @param {LatLngBounds} other
+     * @param {LatLngBounds | LatLngBoundsLiteral} other
      * @returns {boolean}
      */
     equals(other) {
-        if (other instanceof LatLngBounds) {
+        if (!other) {
+            return false;
+        } else if (other instanceof LatLngBounds) {
             return (
                 equals(this.sw, other.getSouthWest()) &&
                 equals(this.ne, other.getNorthEast())
+            );
+        } else if (
+            [other.north, other.south, other.east, other.west].every(
+                n => typeof n === 'number'
+            )
+        ) {
+            const literal = this.toJSON();
+            return (
+                other.north === literal.north &&
+                other.south === literal.south &&
+                other.east === literal.east &&
+                other.west === literal.west
             );
         } else {
             return false;
@@ -108,10 +122,10 @@ export default class LatLngBounds {
      */
     toJSON() {
         return {
-            east: this.ne.lat(),
-            north: this.ne.lng(),
-            south: this.sw.lng(),
-            west: this.sw.lat(),
+            east: this.ne.lng(),
+            north: this.ne.lat(),
+            south: this.sw.lat(),
+            west: this.sw.lng(),
         };
     }
 

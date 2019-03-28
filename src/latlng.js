@@ -186,4 +186,20 @@ export default class LatLng {
             parseFloat(this[LNG].toFixed(precision))
         );
     }
+
+    [Symbol.iterator]() {
+        let i = 0;
+        return {
+            next: () => {
+                if (i < this.length) {
+                    return { value: this[i++], done: false };
+                } else {
+                    return { done: true };
+                }
+            },
+            [Symbol.iterator]() {
+                return this;
+            },
+        };
+    }
 }

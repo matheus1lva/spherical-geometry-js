@@ -16,8 +16,32 @@
             new google.maps.LatLng(44.39450050731302, -79.69500459730625),
             new google.maps.LatLng(44.39456351370196, -79.6948466822505),
         ],
+        bigIsland: new google.maps.LatLngBounds(
+            new google.maps.LatLng(18.719955, -156.007002),
+            new google.maps.LatLng(20.297632, -154.714628)
+        ),
+        hawaii: new google.maps.LatLngBounds(
+            new google.maps.LatLng(18.850912, -160.66249),
+            new google.maps.LatLng(22.240875, -153.791741)
+        ),
+        oahu: new google.maps.LatLngBounds(
+            new google.maps.LatLng(21.235191, -158.326847),
+            new google.maps.LatLng(21.744683, -157.57099)
+        ),
     };
 
+    const oahu1 = new google.maps.LatLngBounds(
+        googlePlaces.oahu.getSouthWest(),
+        googlePlaces.oahu.getNorthEast()
+    );
+    const hawaii1 = new google.maps.LatLngBounds(
+        googlePlaces.hawaii.getSouthWest(),
+        googlePlaces.hawaii.getNorthEast()
+    );
+    const hawaii2 = new google.maps.LatLngBounds(
+        googlePlaces.hawaii.getSouthWest(),
+        googlePlaces.hawaii.getNorthEast()
+    );
     const results = {
         'toString()': googlePlaces.sydney.toString(),
         'toUrlValue()': googlePlaces.sydney.toUrlValue(),
@@ -67,6 +91,12 @@
         'computeArea(...path)': google.maps.geometry.spherical.computeArea(
             googlePlaces.path
         ),
+        'bounds.toString()': googlePlaces.hawaii.toString(),
+        'bounds.toUrlValue()': googlePlaces.hawaii.toUrlValue(),
+        'bounds.toUrlValue(3)': googlePlaces.hawaii.toUrlValue(3),
+        'bounds.extend()': oahu1.extend(googlePlaces.newyork),
+        'bounds.union(oahu)': hawaii1.union(googlePlaces.oahu),
+        'bounds.union(bigIsland)': hawaii2.union(googlePlaces.bigIsland),
     };
 
     console.log(JSON.stringify(results));

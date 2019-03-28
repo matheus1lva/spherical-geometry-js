@@ -12,7 +12,7 @@ export function toDegrees(radians: number): number;
 
 export function toRadians(angleDegrees: number): number;
 
-export class LatLng {
+export class LatLng implements Iterable<number> {
     /**
      * @param lat Latitude
      * @param lng Longitude
@@ -73,6 +73,10 @@ export class LatLng {
      * @param precision Number of decimal places.
      */
     toUrlValue(precision?: number): string;
+
+    [Symbol.iterator](): Iterator<number>;
+
+    readonly [index: number]: number;
 }
 
 /**
@@ -226,10 +230,10 @@ export class LatLngBounds {
 
     /**
      * Check if two bounds are equal.
-     * @param {LatLngBounds} other
+     * @param {LatLngBounds | LatLngBoundsLiteral} other
      * @returns {boolean}
      */
-    equals(other: LatLngBounds): boolean;
+    equals(other: LatLngBounds | LatLngBoundsLiteral): boolean;
 
     /**
      * Mutate the bounds to include the given point.

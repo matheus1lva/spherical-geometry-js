@@ -73,6 +73,15 @@ describe('LatLng', () => {
             expect(place.lng()).toBe(place.longitude);
         }
     });
+
+    it('should return an iterator', () => {
+        let i = 0;
+        for (const n of places.london) {
+            expect(n).toEqual(places.london[i]);
+            i++;
+        }
+        expect(i).toEqual(2);
+    });
 });
 
 describe('equalLatLngs', () => {
