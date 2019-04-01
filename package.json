@@ -42,7 +42,7 @@
         "prettier": "^1.16.4",
         "rollup": "^1.7.4",
         "ts-jest": "^24.0.1",
-        "typescript": "^3.3.4000"
+        "typescript": "^3.4.1"
     },
     "jest": {},
     "husky": {
