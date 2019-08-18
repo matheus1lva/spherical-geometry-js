@@ -134,10 +134,30 @@ describe('covertLatLng', () => {
     });
 
     it('should convert Javascript Coordinates from Geolocation API', () => {
-        const coords = {
-            latitude: places.newyork.lat(),
-            longitude: places.newyork.lng(),
-        };
+        class Coordinates {
+            /**
+             *
+             * @param {number} latitude
+             * @param {number} longitude
+             */
+            constructor(latitude, longitude) {
+                this._la = latitude;
+                this._lo = longitude;
+            }
+
+            get latitude() {
+                return this._la;
+            }
+
+            get longitude() {
+                return this._lo;
+            }
+        }
+
+        const coords = new Coordinates(
+            places.newyork.lat(),
+            places.newyork.lng()
+        );
         expect(convertLatLng(coords)).toEqual(places.newyork);
     });
 
@@ -161,5 +181,14 @@ describe('covertLatLng', () => {
             y: places.newyork.lat(),
         };
         expect(convertLatLng(place)).toEqual(places.newyork);
+    });
+
+    it('should not convert other objects', () => {
+        /** @type {any} */
+        const notPlace = {
+            foo: 10,
+            bar: 12,
+        };
+        expect(() => convertLatLng(notPlace)).toThrow(TypeError);
     });
 });

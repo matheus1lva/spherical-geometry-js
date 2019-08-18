@@ -1,13 +1,5 @@
-const LAT = Symbol('Latitude');
-const LNG = Symbol('Longitude');
-
-/**
- * Shorthand for Object#hasOwnProperty
- * @param {object} obj
- * @param {string | symbol} prop
- * @returns {boolean}
- */
-const has = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
+const LAT = 'latitude';
+const LNG = 'longitude';
 
 /**
  * Converts an object into a LatLng. Tries a few different methods:
@@ -27,28 +19,32 @@ const has = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
  * 7. If it has x and y properties, try using y as latitude and x and
  *    longitude.
  * @param {any} like
- * @param {function} [Class=LatLng]
  * @returns {LatLng}
  */
-export function convert(like, Class = LatLng) {
+export function convert(like) {
     if (like instanceof LatLng) {
-        return new Class(like[LAT], like[LNG]);
-    } else if (has(like, 'lat') && has(like, 'lng')) {
+        return new LatLng(like[LAT], like[LNG]);
+    } else if ('lat' in like && 'lng' in like) {
         if (typeof like.lat == 'function' && typeof like.lng == 'function') {
-            return new Class(like.lat(), like.lng());
+            return new LatLng(like.lat(), like.lng());
         } else {
-            return new Class(parseFloat(like.lat), parseFloat(like.lng));
+            return new LatLng(parseFloat(like.lat), parseFloat(like.lng));
         }
-    } else if (has(like, 'lat') && has(like, 'long')) {
-        return new Class(parseFloat(like.lat), parseFloat(like.long));
-    } else if (has(like, 'lat') && has(like, 'lon')) {
-        return new Class(parseFloat(like.lat), parseFloat(like.lon));
-    } else if (has(like, 'latitude') && has(like, 'longitude')) {
-        return new Class(parseFloat(like.latitude), parseFloat(like.longitude));
+    } else if ('lat' in like && 'long' in like) {
+        return new LatLng(parseFloat(like.lat), parseFloat(like.long));
+    } else if ('lat' in like && 'lon' in like) {
+        return new LatLng(parseFloat(like.lat), parseFloat(like.lon));
+    } else if ('latitude' in like && 'longitude' in like) {
+        return new LatLng(
+            parseFloat(like.latitude),
+            parseFloat(like.longitude)
+        );
     } else if (typeof like[0] === 'number' && typeof like[1] === 'number') {
-        return new Class(like[1], like[0]);
-    } else if (has(like, 'x') && has(like, 'y')) {
-        return new Class(parseFloat(like.y), parseFloat(like.x));
+        return new LatLng(like[1], like[0]);
+    } else if ('x' in like && 'y' in like) {
+        return new LatLng(parseFloat(like.y), parseFloat(like.x));
+    } else {
+        throw new TypeError(`Cannot convert ${like} to LatLng`);
     }
 }
 
@@ -129,14 +125,6 @@ export default class LatLng {
     /** @type {number} alias for lat */
     get y() {
         return this[LAT];
-    }
-    /** @type {number} alias for lat */
-    get latitude() {
-        return this[LAT];
-    }
-    /** @type {number} alias for lng */
-    get longitude() {
-        return this[LNG];
     }
     /** @type {number} alias for lng */
     get 0() {
