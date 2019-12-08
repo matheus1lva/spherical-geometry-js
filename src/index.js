@@ -5,9 +5,7 @@
  */
 
 export { default as computeArea } from './compute-area.js';
-export {
-    default as computeDistanceBetween,
-} from './compute-distance-between.js';
+export { default as computeDistanceBetween } from './compute-distance-between.js';
 export { default as computeHeading } from './compute-heading.js';
 export { default as computeLength } from './compute-length.js';
 export { default as computeOffset } from './compute-offset.js';
