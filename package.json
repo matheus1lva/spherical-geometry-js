@@ -15,7 +15,7 @@
     "scripts": {
         "prepublishOnly": "npm run build",
         "pretest": "npm run build",
-        "test": "jest",
+        "test": "tsc && jest",
         "build": "rollup -c",
         "lint": "prettier \"src/**/*.js\" \"test/**/*.js\" --write",
         "lint:check": "prettier \"src/**/*.js\" \"test/**/*.js\" --check"
@@ -36,13 +36,12 @@
         "geometric"
     ],
     "devDependencies": {
-        "@types/jest": "^26.0.3",
+        "@types/jest": "^26.0.13",
         "husky": "^4.2.5",
-        "jest": "^24.9.0",
-        "prettier": "^1.19.1",
-        "rollup": "^1.32.0",
-        "ts-jest": "^24.3.0",
-        "typescript": "^3.9.6"
+        "jest": "^26.4.2",
+        "prettier": "^2.1.1",
+        "rollup": "^2.26.10",
+        "typescript": "^4.0.2"
     },
     "jest": {},
     "husky": {

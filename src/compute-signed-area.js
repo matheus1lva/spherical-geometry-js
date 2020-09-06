@@ -20,7 +20,7 @@ function sphericalExcess(a, b, c) {
 }
 
 function sphericalSign(a, b, c) {
-    const matrix = [a, b, c].map(point => {
+    const matrix = [a, b, c].map((point) => {
         const lat = toRadians(point.lat());
         const lng = toRadians(point.lng());
         return [
@@ -56,7 +56,7 @@ function computeSphericalExcess(a, b, c) {
  */
 export default function computeSignedArea(loop, radius = EARTH_RADIUS) {
     if (loop.length < 3) return 0;
-    loop = loop.map(v => convert(v));
+    loop = loop.map((v) => convert(v));
 
     let total = 0;
     for (var i = 1; i < loop.length - 1; i++) {

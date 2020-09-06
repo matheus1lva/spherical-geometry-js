@@ -43,7 +43,7 @@ export default class LatLngBounds {
             );
         } else if (
             [other.north, other.south, other.east, other.west].every(
-                n => typeof n === 'number'
+                (n) => typeof n === 'number'
             )
         ) {
             const literal = this.toJSON();
