@@ -49,6 +49,14 @@ export function convert(like) {
 }
 
 /**
+ * Converts a LatLngLiteral into a LatLng.
+ * @param {LatLngLiteral} literal
+ */
+export function convertLiteral(literal) {
+    return new LatLng(literal.lat, literal.lng);
+}
+
+/**
  * Comparison function
  * @param {LatLng} one
  * @param {LatLng} two

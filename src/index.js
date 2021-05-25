@@ -16,6 +16,7 @@ export { default as interpolate } from './interpolate.js';
 export {
     default as LatLng,
     convert as convertLatLng,
+    convertLiteral as convertLatLngLiteral,
     equals as equalLatLngs,
 } from './latlng.js';
 export { default as LatLngBounds } from './latlng-bounds.js';

@@ -12,6 +12,17 @@ export function toDegrees(radians: number): number;
 
 export function toRadians(angleDegrees: number): number;
 
+export interface LatLngLiteral {
+    /**
+     * Latitude in degrees.
+     */
+    lat: number;
+    /**
+     * Longitude in degrees.
+     */
+    lng: number;
+}
+
 export class LatLng implements Iterable<number> {
     /**
      * @param lat Latitude
@@ -62,7 +73,7 @@ export class LatLng implements Iterable<number> {
      * JSON.stringify.
      * @returns LatLngLiteral
      */
-    toJSON(): { lat: number; lng: number };
+    toJSON(): LatLngLiteral;
 
     /** Converts to string representation. */
     toString(): string;
@@ -86,14 +97,14 @@ export class LatLng implements Iterable<number> {
  */
 type LatLngLike =
     | LatLng
-    | { lat(): number; lng(): number }
-    | { lat: string | number; lng: string | number }
-    | { lat: string | number; long: string | number }
-    | { lat: string | number; lon: string | number }
-    | { latitude: string | number; longitude: string | number }
-    | [number, number]
-    | { 0: number; 1: number }
-    | { x: string | number; y: string | number };
+    | Readonly<{ lat(): number; lng(): number }>
+    | Readonly<{ lat: string | number; lng: string | number }>
+    | Readonly<{ lat: string | number; long: string | number }>
+    | Readonly<{ lat: string | number; lon: string | number }>
+    | Readonly<{ latitude: string | number; longitude: string | number }>
+    | readonly [number, number]
+    | Readonly<{ 0: number; 1: number }>
+    | Readonly<{ x: string | number; y: string | number }>;
 
 /**
  * Converts an object into a LatLng. Tries a few different methods:
@@ -114,6 +125,11 @@ type LatLngLike =
  *    longitude.
  */
 export function convertLatLng(like: LatLngLike): LatLng;
+
+/**
+ * Converts a LatLngLiteral into a LatLng.
+ */
+export function convertLatLngLiteral(literal: LatLngLiteral): LatLng;
 
 /**
  * Compares two different coordinates.

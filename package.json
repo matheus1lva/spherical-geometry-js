@@ -1,6 +1,6 @@
 {
     "name": "spherical-geometry-js",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "This library provides classes and functions for the computation of geometric data on the surface of the Earth. Code ported from the Google Maps Javascript API v3",
     "license": "MIT",
     "author": "Tiger Oakes <contact@tigeroakes.com> (https://tigeroakes.com)",
@@ -9,6 +9,10 @@
     "homepage": "https://github.com/NotWoods/spherical-geometry-js#readme",
     "main": "cjs.js",
     "module": "src/index.js",
+    "exports": {
+        "import": "./src/index.js",
+        "require": "./cjs.js"
+    },
     "jsnext:main": "src/index.js",
     "types": "index.d.ts",
     "sideEffects": false,
@@ -36,12 +40,12 @@
         "geometric"
     ],
     "devDependencies": {
-        "@types/jest": "^26.0.18",
+        "@types/jest": "^26.0.23",
         "husky": "^4.3.5",
         "jest": "^26.6.3",
-        "prettier": "^2.2.1",
-        "rollup": "^2.34.2",
-        "typescript": "^4.1.2"
+        "prettier": "~2.3.0",
+        "rollup": "^2.49.0",
+        "typescript": "^4.2.4"
     },
     "jest": {},
     "husky": {
