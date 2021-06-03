@@ -53,7 +53,7 @@ test('should be equal to LatLngLiteral version', (t) => {
 
 test('should work with Array.from', (t) => {
   const arr = Array.from(sydney);
-  closeTo(t, arr[0], 151.20689);
+  closeTo(t, arr[0], sydney.lng());
   closeTo(t, arr[1], -33.873651);
   t.is(arr.length, 2);
   t.true(Array.isArray(arr));

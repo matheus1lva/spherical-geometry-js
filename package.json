@@ -12,16 +12,13 @@
   "bugs": "https://github.com/NotWoods/spherical-geometry-js/issues",
   "homepage": "https://github.com/NotWoods/spherical-geometry-js#readme",
   "type": "module",
+  "exports": "./src/index.js",
   "module": "src/index.js",
-  "exports": {
-    "import": "./src/index.js",
-    "require": "./cjs.js"
-  },
   "types": "src/index.d.ts",
   "sideEffects": false,
   "scripts": {
     "test": "ava",
-    "lint": "tsc && prettier \"src/**/*.js\" \"test/**/*.{js,json,html}\" \"**/README.md\" --write"
+    "lint": "prettier \"src/**/*.js\" \"test/**/*.{js,json,html}\" \"**/README.md\" --write"
   },
   "keywords": [
     "google",
