@@ -1,0 +1,17 @@
+{
+  "include": ["src/index.d.ts", "./src/**/*.js", "./test/**/*.js"],
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "ES2020",
+    "noEmit": true,
+    "checkJs": true,
+    "allowJs": true,
+    "pretty": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true
+  }
+}

@@ -13,11 +13,11 @@ export { default as computeOffsetOrigin } from './compute-offset-origin.js';
 export { default as computeSignedArea } from './compute-signed-area.js';
 export { default as interpolate } from './interpolate.js';
 
+export { default as LatLng } from './latlng.js';
 export {
-    default as LatLng,
-    convert as convertLatLng,
-    convertLiteral as convertLatLngLiteral,
-    equals as equalLatLngs,
-} from './latlng.js';
+  convert as convertLatLng,
+  convertLiteral as convertLatLngLiteral,
+  equals as equalLatLngs,
+} from './convert.js';
 export { default as LatLngBounds } from './latlng-bounds.js';
 export * from './utils.js';

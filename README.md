@@ -24,10 +24,10 @@ import computeArea from 'spherical-geometry-js/compute-area';
 
 Notes:
 
--   The API is nearly identical to the Google Maps Javascript API.
--   Functions automatically convert coordinate objects into `LatLng`s. See
-    [`convertLatLng`](#convertlatlnglike--latlng) for more details.
--   All computed lengths are returned in **meters**.
+- The API is nearly identical to the Google Maps Javascript API.
+- Functions automatically convert coordinate objects into `LatLng`s. See
+  [`convertLatLng`](#convertlatlnglike--latlng) for more details.
+- All computed lengths are returned in **meters**.
 
 ## API
 
@@ -36,8 +36,8 @@ Notes:
 
 Classes and libraries ported from the Google Maps Javascript API:
 
--   [google.maps.geometry.spherical](https://developers.google.com/maps/documentation/javascript/reference/geometry#spherical)
--   [google.maps.LatLng](https://developers.google.com/maps/documentation/javascript/reference/coordinates#LatLng)
+- [google.maps.geometry.spherical](https://developers.google.com/maps/documentation/javascript/reference/geometry#spherical)
+- [google.maps.LatLng](https://developers.google.com/maps/documentation/javascript/reference/coordinates#LatLng)
 
 This module tries to maintain full API compatibility with Google Maps so it can
 be used as a drop-in replacement.
@@ -77,10 +77,10 @@ different methods:
 1. If `instanceof LatLng`, clone the object and return it.
 2. If it has `lat` and `lng` properties...
 
-    2a. if the properties are functions (like Google `LatLng`s), use the `lat()`
-    and `lng()` values as latitude and longitude.
+   2a. if the properties are functions (like Google `LatLng`s), use the `lat()`
+   and `lng()` values as latitude and longitude.
 
-    2b. otherwise get `lat` and `lng`, parse them as floats and use them.
+   2b. otherwise get `lat` and `lng`, parse them as floats and use them.
 
 3. If it has `lat` and _`long`_ properties, parse them as floats use them.
 4. If it has `lat` and _`lon`_ properties, parse them as floats use them.

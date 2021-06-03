@@ -1,61 +1,63 @@
 {
-    "name": "spherical-geometry-js",
-    "version": "2.1.0",
-    "description": "This library provides classes and functions for the computation of geometric data on the surface of the Earth. Code ported from the Google Maps Javascript API v3",
-    "license": "MIT",
-    "author": "Tiger Oakes <contact@tigeroakes.com> (https://tigeroakes.com)",
-    "repository": "NotWoods/spherical-geometry-js",
-    "bugs": "https://github.com/NotWoods/spherical-geometry-js/issues",
-    "homepage": "https://github.com/NotWoods/spherical-geometry-js#readme",
-    "main": "cjs.js",
-    "module": "src/index.js",
-    "exports": {
-        "import": "./src/index.js",
-        "require": "./cjs.js"
-    },
-    "jsnext:main": "src/index.js",
-    "types": "index.d.ts",
-    "sideEffects": false,
-    "scripts": {
-        "prepublishOnly": "npm run build",
-        "pretest": "npm run build",
-        "test": "tsc && jest",
-        "build": "rollup -c",
-        "lint": "prettier \"src/**/*.js\" \"test/**/*.js\" --write",
-        "lint:check": "prettier \"src/**/*.js\" \"test/**/*.js\" --check"
-    },
-    "keywords": [
-        "google",
-        "geometry",
-        "spherical",
-        "geometry",
-        "google",
-        "maps",
-        "google",
-        "maps",
-        "api",
-        "google",
-        "maps",
-        "javascript",
-        "geometric"
-    ],
-    "devDependencies": {
-        "@types/jest": "^26.0.23",
-        "husky": "^4.3.5",
-        "jest": "^26.6.3",
-        "prettier": "~2.3.0",
-        "rollup": "^2.49.0",
-        "typescript": "^4.2.4"
-    },
-    "jest": {},
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm run lint"
-        }
-    },
-    "prettier": {
-        "singleQuote": true,
-        "trailingComma": "es5",
-        "proseWrap": "always"
-    }
+  "name": "spherical-geometry-js",
+  "version": "3.0.0",
+  "description": "This library provides classes and functions for the computation of geometric data on the surface of the Earth. Code ported from the Google Maps Javascript API v3",
+  "license": "MIT",
+  "author": {
+    "name": "Tiger Oakes",
+    "email": "contact@tigeroakes.com",
+    "url": "https://tigeroakes.com"
+  },
+  "repository": "NotWoods/spherical-geometry-js",
+  "bugs": "https://github.com/NotWoods/spherical-geometry-js/issues",
+  "homepage": "https://github.com/NotWoods/spherical-geometry-js#readme",
+  "type": "module",
+  "module": "src/index.js",
+  "exports": {
+    "import": "./src/index.js",
+    "require": "./cjs.js"
+  },
+  "types": "src/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "test": "ava",
+    "lint": "tsc && prettier \"src/**/*.js\" \"test/**/*.{js,json,html}\" \"**/README.md\" --write"
+  },
+  "keywords": [
+    "google",
+    "geometry",
+    "spherical",
+    "geometry",
+    "google",
+    "maps",
+    "google",
+    "maps",
+    "api",
+    "google",
+    "maps",
+    "javascript",
+    "geometric"
+  ],
+  "devDependencies": {
+    "@types/node": "^15.9.0",
+    "ava": "^3.15.0",
+    "prettier": "~2.3.0",
+    "typescript": "^4.3.2"
+  },
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "proseWrap": "always"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.spec.js"
+    ]
+  }
 }

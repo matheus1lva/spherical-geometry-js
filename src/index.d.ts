@@ -13,81 +13,81 @@ export function toDegrees(radians: number): number;
 export function toRadians(angleDegrees: number): number;
 
 export interface LatLngLiteral {
-    /**
-     * Latitude in degrees.
-     */
-    lat: number;
-    /**
-     * Longitude in degrees.
-     */
-    lng: number;
+  /**
+   * Latitude in degrees.
+   */
+  lat: number;
+  /**
+   * Longitude in degrees.
+   */
+  lng: number;
 }
 
 export class LatLng implements Iterable<number> {
-    /**
-     * @param lat Latitude
-     * @param lng Longitude
-     * @param noWrap By default, constrain latitude and longitude.
-     * Ensures latitude is between [-90, 90] and
-     * longitude is below 180.
-     * Set noWrap to true to avoid this behavior.
-     */
-    constructor(lat: number | string, lng: number | string, noWrap?: boolean);
+  /**
+   * @param lat Latitude
+   * @param lng Longitude
+   * @param noWrap By default, constrain latitude and longitude.
+   * Ensures latitude is between [-90, 90] and
+   * longitude is below 180.
+   * Set noWrap to true to avoid this behavior.
+   */
+  constructor(lat: number | string, lng: number | string, noWrap?: boolean);
 
-    /** Comparison function */
-    equals(other: LatLngLike): boolean;
+  /** Comparison function */
+  equals(other: LatLngLike): boolean;
 
-    /**
-     * Returns the latitude in degrees.
-     * (I'd rather use getters but this is for consistency)
-     */
-    lat(): number;
+  /**
+   * Returns the latitude in degrees.
+   * (I'd rather use getters but this is for consistency)
+   */
+  lat(): number;
 
-    /**
-     * Returns the longitude in degrees.
-     * (I'd rather use getters but this is for consistency)
-     */
-    lng(): number;
+  /**
+   * Returns the longitude in degrees.
+   * (I'd rather use getters but this is for consistency)
+   */
+  lng(): number;
 
-    /** alias for lng */
-    readonly x: number;
-    /** alias for lat */
-    readonly y: number;
-    /** alias for lat */
-    readonly latitude: number;
-    /** alias for lng */
-    readonly longitude: number;
-    /** alias for lng */
-    readonly 0: number;
-    /** alias for lat */
-    readonly 1: number;
-    /** alias for lng */
-    readonly long: number;
-    /** alias for lng */
-    readonly lon: number;
+  /** alias for lng */
+  readonly x: number;
+  /** alias for lat */
+  readonly y: number;
+  /** alias for lat */
+  readonly latitude: number;
+  /** alias for lng */
+  readonly longitude: number;
+  /** alias for lng */
+  readonly 0: number;
+  /** alias for lat */
+  readonly 1: number;
+  /** alias for lng */
+  readonly long: number;
+  /** alias for lng */
+  readonly lon: number;
 
-    readonly length: 2;
+  readonly length: 2;
 
-    /**
-     * Converts to JSON representation. This function is intended to be used via
-     * JSON.stringify.
-     * @returns LatLngLiteral
-     */
-    toJSON(): LatLngLiteral;
+  /**
+   * Converts to JSON representation. This function is intended to be used via
+   * JSON.stringify.
+   * @returns LatLngLiteral
+   */
+  toJSON(): LatLngLiteral;
 
-    /** Converts to string representation. */
-    toString(): string;
+  /** Converts to string representation. */
+  toString(): string;
 
-    /**
-     * Returns a string of the form "lat,lng" for this LatLng. We round the
-     * lat/lng values to 6 decimal places by default.
-     * @param precision Number of decimal places.
-     */
-    toUrlValue(precision?: number): string;
+  /**
+   * Returns a string of the form "lat,lng" for this LatLng. We round the
+   * lat/lng values to 6 decimal places by default.
+   * @param precision Number of decimal places.
+   */
+  toUrlValue(precision?: number): string;
 
-    [Symbol.iterator](): Iterator<number>;
+  [Symbol.iterator](): Iterator<number>;
 
-    readonly [index: number]: number;
+  readonly [index: number]: number;
 }
 
 /**
@@ -96,15 +96,15 @@ export class LatLng implements Iterable<number> {
  * convert your inputs so you don't need to call convert yourself.
  */
 type LatLngLike =
-    | LatLng
-    | Readonly<{ lat(): number; lng(): number }>
-    | Readonly<{ lat: string | number; lng: string | number }>
-    | Readonly<{ lat: string | number; long: string | number }>
-    | Readonly<{ lat: string | number; lon: string | number }>
-    | Readonly<{ latitude: string | number; longitude: string | number }>
-    | readonly [number, number]
-    | Readonly<{ 0: number; 1: number }>
-    | Readonly<{ x: string | number; y: string | number }>;
+  | LatLng
+  | Readonly<{ lat(): number; lng(): number }>
+  | Readonly<{ lat: string | number; lng: string | number }>
+  | Readonly<{ lat: string | number; long: string | number }>
+  | Readonly<{ lat: string | number; lon: string | number }>
+  | Readonly<{ latitude: string | number; longitude: string | number }>
+  | readonly [number, number]
+  | Readonly<{ 0: number; 1: number }>
+  | Readonly<{ x: string | number; y: string | number }>;
 
 /**
  * Converts an object into a LatLng. Tries a few different methods:
@@ -144,8 +144,8 @@ export function equalLatLngs(one: LatLngLike, two: LatLngLike): boolean;
  * @param radius Radius of planet.
  */
 export function computeArea(
-    path: ReadonlyArray<LatLngLike>,
-    radius?: number
+  path: ReadonlyArray<LatLngLike>,
+  radius?: number
 ): number;
 
 /**
@@ -156,9 +156,9 @@ export function computeArea(
  * @param radius Radius of planet.
  */
 export function computeDistanceBetween(
-    from: LatLngLike,
-    to: LatLngLike,
-    radius?: number
+  from: LatLngLike,
+  to: LatLngLike,
+  radius?: number
 ): number;
 
 /**
@@ -173,8 +173,8 @@ export function computeHeading(from: LatLngLike, to: LatLngLike): number;
  * @param radius Radius of planet.
  */
 export function computeLength(
-    path: ReadonlyArray<LatLngLike>,
-    radius?: number
+  path: ReadonlyArray<LatLngLike>,
+  radius?: number
 ): number;
 
 /**
@@ -183,10 +183,10 @@ export function computeLength(
  * @param radius Radius of planet.
  */
 export function computeOffset(
-    from: LatLngLike,
-    distance: number,
-    heading: number,
-    radius?: number
+  from: LatLngLike,
+  distance: number,
+  heading: number,
+  radius?: number
 ): LatLng;
 
 /**
@@ -197,10 +197,10 @@ export function computeOffset(
  * @param radius Radius of planet.
  */
 export function computeOffsetOrigin(
-    to: LatLngLike,
-    distance: number,
-    heading: number,
-    radius?: number
+  to: LatLngLike,
+  distance: number,
+  heading: number,
+  radius?: number
 ): LatLng | null;
 
 /**
@@ -212,8 +212,8 @@ export function computeOffsetOrigin(
  * @param radius Radius of planet.
  */
 export function computeSignedArea(
-    loop: ReadonlyArray<LatLngLike>,
-    radius?: number
+  loop: ReadonlyArray<LatLngLike>,
+  radius?: number
 ): number;
 
 /**
@@ -224,70 +224,70 @@ export function computeSignedArea(
  * @param fraction Percentage from [0, 1].
  */
 export function interpolate(
-    from: LatLngLike,
-    to: LatLngLike,
-    fraction: number
+  from: LatLngLike,
+  to: LatLngLike,
+  fraction: number
 ): LatLng;
 
 export interface LatLngBoundsLiteral {
-    east: number;
-    north: number;
-    south: number;
-    west: number;
+  east: number;
+  north: number;
+  south: number;
+  west: number;
 }
 
 export class LatLngBounds {
-    constructor(southwest?: LatLngLike, northeast?: LatLngLike);
+  constructor(southwest?: LatLngLike, northeast?: LatLngLike);
 
-    /**
-     * Check if point is within bounds.
-     */
-    contains(latlng: LatLngLike): boolean;
+  /**
+   * Check if point is within bounds.
+   */
+  contains(latlng: LatLngLike): boolean;
 
-    /**
-     * Check if two bounds are equal.
-     * @param {LatLngBounds | LatLngBoundsLiteral} other
-     * @returns {boolean}
-     */
-    equals(other: LatLngBounds | LatLngBoundsLiteral): boolean;
+  /**
+   * Check if two bounds are equal.
+   * @param {LatLngBounds | LatLngBoundsLiteral} other
+   * @returns {boolean}
+   */
+  equals(other: LatLngBounds | LatLngBoundsLiteral): boolean;
 
-    /**
-     * Mutate the bounds to include the given point.
-     */
-    extend(point: LatLngLike): this;
+  /**
+   * Mutate the bounds to include the given point.
+   */
+  extend(point: LatLngLike): this;
 
-    /**
-     * Computes and returns the center point of the bounds.
-     */
-    getCenter(): LatLng;
+  /**
+   * Computes and returns the center point of the bounds.
+   */
+  getCenter(): LatLng;
 
-    getNorthEast(): LatLng;
+  getNorthEast(): LatLng;
 
-    getSouthWest(): LatLng;
+  getSouthWest(): LatLng;
 
-    /**
-     * Check if two bounds intersect at all.
-     */
-    intersects(other: LatLngBounds): boolean;
+  /**
+   * Check if two bounds intersect at all.
+   */
+  intersects(other: LatLngBounds): boolean;
 
-    /**
-     * Return true if the southwest and northeast corners are equal.
-     */
-    isEmpty(): boolean;
+  /**
+   * Return true if the southwest and northeast corners are equal.
+   */
+  isEmpty(): boolean;
 
-    /**
-     * Convert into a LatLngBoundsLiteral.
-     */
-    toJSON(): LatLngBoundsLiteral;
+  /**
+   * Convert into a LatLngBoundsLiteral.
+   */
+  toJSON(): LatLngBoundsLiteral;
 
-    toSpan(): never;
+  toSpan(): never;
 
-    toString(): string;
+  toString(): string;
 
-    toUrlValue(precision?: number): string;
+  toUrlValue(precision?: number): string;
 
-    /**
-     * Mutate the bounds to include the other bounds.
-     */
-    union(other: LatLngBounds): this;
+  /**
+   * Mutate the bounds to include the other bounds.
+   */
+  union(other: LatLngBounds): this;
 }
