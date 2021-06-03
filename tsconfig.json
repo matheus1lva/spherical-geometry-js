@@ -1,5 +1,10 @@
 {
-  "include": ["./src/index.d.ts", "./src/**/*.js", "./test/**/*.js"],
+  "include": [
+    "./src/index.d.ts",
+    "./src/**/*.js",
+    "./test/**/*.js",
+    "./test/**/*.json"
+  ],
   "compilerOptions": {
     "target": "es2018",
     "module": "ES2020",
