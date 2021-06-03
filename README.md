@@ -1,6 +1,6 @@
 <img alt="" src="images/sphere-geom-logo.png" height="160" width="160">
 
-# Spherical Geometry Library &middot; [![Build Status](https://img.shields.io/travis/com/NotWoods/spherical-geometry-js.svg)](https://travis-ci.com/NotWoods/spherical-geometry-js) [![npm](https://img.shields.io/npm/v/spherical-geometry-js.svg)](https://www.npmjs.com/package/spherical-geometry-js) [![Downloads](https://img.shields.io/npm/dt/spherical-geometry-js.svg)](https://www.npmjs.com/package/spherical-geometry-js)
+# Spherical Geometry Library &middot; [![npm](https://img.shields.io/npm/v/spherical-geometry-js.svg)](https://www.npmjs.com/package/spherical-geometry-js) [![Downloads](https://img.shields.io/npm/dt/spherical-geometry-js.svg)](https://www.npmjs.com/package/spherical-geometry-js)
 
 This library provides classes and functions for the computation of geometric
 data on the surface of the Earth.
