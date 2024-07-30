@@ -1,5 +1,5 @@
 import test from 'ava';
-import { LatLngBounds } from '../src/index.js';
+import { LatLngBounds } from '../dist/index.js';
 import { googleMaps, loadGoogleMapsData } from './data/google-maps.js';
 import { bigIsland, hawaii, newyork, oahu } from './data/places.js';
 

@@ -1,5 +1,5 @@
 import test from 'ava';
-import { equalLatLngs } from '../src/index.js';
+import { equalLatLngs } from '../dist/index.js';
 import { buenosaires, sydney } from './data/places.js';
 
 test('should be equal to itself', (t) => {

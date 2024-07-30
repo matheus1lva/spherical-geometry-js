@@ -1,21 +1,10 @@
 {
-  "name": "spherical-geometry-js",
-  "version": "3.0.0",
+  "name": "map-distance-utils",
+  "version": "2.0.1",
   "description": "This library provides classes and functions for the computation of geometric data on the surface of the Earth. Code ported from the Google Maps Javascript API v3",
   "license": "MIT",
-  "author": {
-    "name": "Tiger Oakes",
-    "email": "contact@tigeroakes.com",
-    "url": "https://tigeroakes.com"
-  },
-  "repository": "NotWoods/spherical-geometry-js",
-  "bugs": "https://github.com/NotWoods/spherical-geometry-js/issues",
-  "homepage": "https://github.com/NotWoods/spherical-geometry-js#readme",
-  "type": "module",
-  "exports": "./src/index.js",
-  "module": "src/index.js",
-  "types": "src/index.d.ts",
-  "sideEffects": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "ava",
     "lint": "prettier \"src/**/*.js\" \"test/**/*.{js,json,html}\" \"**/README.md\" --write"
@@ -42,7 +31,7 @@
     "typescript": "^4.3.2"
   },
   "files": [
-    "src"
+    "dist"
   ],
   "engines": {
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0"

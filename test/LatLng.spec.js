@@ -1,5 +1,5 @@
 import test from 'ava';
-import { LatLng } from '../src/index.js';
+import { LatLng } from '../dist/index.js';
 import { closeTo } from './assert.js';
 import { googleMaps, loadGoogleMapsData } from './data/google-maps.js';
 import {

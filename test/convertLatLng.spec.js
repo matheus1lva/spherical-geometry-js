@@ -1,5 +1,5 @@
 import test from 'ava';
-import { convertLatLng } from '../src/index.js';
+import { convertLatLng } from '../dist/index.js';
 import { london, newyork, sydney } from './data/places.js';
 
 test('should clone LatLngs', (t) => {

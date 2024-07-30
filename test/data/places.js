@@ -1,4 +1,4 @@
-import { LatLng, LatLngBounds } from '../../src/index.js';
+import { LatLng, LatLngBounds } from '../../dist/index.js';
 
 export const donostia = new LatLng(43.320812, -1.984447);
 export const london = new LatLng(51.508129, -0.128005);
